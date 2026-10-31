@@ -1,68 +1,975 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="VIROX premium printed oversized T-shirts and streetwear. Wear your story.">
-<title>VIROX — Premium Printed Streetwear</title>
-<style>
-:root{--black:#080808;--white:#fff;--grey:#777;--lime:#d8ff3e;--line:#e6e6e6}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--black);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}button,input{font:inherit;cursor:pointer}.announcement{background:#080808;color:#fff;text-align:center;padding:11px;font-size:10px;font-weight:700;letter-spacing:1.4px}.nav{height:68px;background:#080808;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:10}.logo{font-size:30px;letter-spacing:-2px;font-weight:950}.navlinks{display:flex;gap:30px}.navlinks a{font-size:10px;font-weight:700;letter-spacing:1px}.navlinks a:hover{color:var(--lime)}.actions{display:flex;align-items:center;gap:15px}.icon-btn{border:0;background:none;color:#fff;font-size:20px;position:relative}.count{position:absolute;right:-8px;top:-5px;border-radius:50%;background:var(--lime);color:#000;font-size:10px;min-width:17px;height:17px;display:grid;place-items:center}.hero{min-height:480px;position:relative;background:#222;display:flex;align-items:center;color:white;overflow:hidden}.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.82}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#000d,#0007 40%,transparent)}.hero-content{position:relative;z-index:1;padding:55px 8.5%;max-width:560px}.eyebrow{font-size:10px;letter-spacing:5px;font-weight:700;margin:0 0 18px}.hero h1{font-size:clamp(54px,7.5vw,88px);letter-spacing:-4px;line-height:.84;margin:0 0 22px;font-weight:950}.hero p:not(.eyebrow){font-size:14px;line-height:1.6;color:#eee;max-width:320px}.buttons{display:flex;gap:12px;margin-top:25px;flex-wrap:wrap}.btn{padding:14px 23px;border:1px solid #fff;display:inline-flex;justify-content:center;align-items:center;font-size:10px;font-weight:800;letter-spacing:1px}.btn.primary{background:#fff;color:#000}.btn.primary:hover{background:var(--lime);border-color:var(--lime)}.btn.secondary:hover{background:#fff;color:#000}.benefits{display:grid;grid-template-columns:repeat(4,1fr);padding:18px 5%;border-bottom:1px solid var(--line)}.benefit{display:flex;align-items:center;justify-content:center;gap:10px;border-right:1px solid #ddd;padding:4px}.benefit:last-child{border:0}.benefit .ico{font-size:22px}.benefit strong{font-size:10px;display:block}.benefit small{font-size:10px;color:#666;display:block;margin-top:4px}.section{padding:48px 5%}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:22px}.kicker{font-size:9px;letter-spacing:4px;font-weight:700;margin:0 0 8px}.section h2{font-size:30px;letter-spacing:-1px;margin:0;font-weight:950}.viewall{font-size:10px;font-weight:800;border-bottom:1px solid;padding-bottom:4px}.search{width:100%;max-width:330px;padding:12px;border:1px solid #ddd;margin-bottom:18px;font-size:12px}.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product-image-wrap{aspect-ratio:.78;background:#eee;position:relative;overflow:hidden}.product-image{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}.product-card:hover .product-image{transform:scale(1.04)}.tag{position:absolute;top:11px;left:11px;background:#080808;color:white;border-radius:20px;padding:7px 10px;font-size:8px;font-weight:800;letter-spacing:.5px}.quick-add{position:absolute;bottom:10px;left:10px;right:10px;width:calc(100% - 20px);padding:13px;background:white;color:#000;border:0;font-size:10px;font-weight:800;letter-spacing:.8px;opacity:0;transform:translateY(6px);transition:.2s}.product-card:hover .quick-add,.quick-add:focus{opacity:1;transform:none}.product-meta{display:flex;justify-content:space-between;gap:8px;margin-top:12px}.product-name{font-size:10px;font-weight:800;margin:0 0 6px}.price{font-size:12px;font-weight:700;margin:0}.swatches{display:flex;gap:5px}.swatch{width:13px;height:13px;border:1px solid #aaa;border-radius:50%;background:#111}.swatch.white{background:#fff}.manifesto{background:#080808;color:white;text-align:center;padding:72px 20px}.manifesto .eyebrow{color:var(--lime)}.manifesto h2{font-size:clamp(32px,5vw,58px);line-height:.98;letter-spacing:-2px;margin:0 auto 18px}.manifesto p{font-size:13px;line-height:1.7;color:#aaa;max-width:470px;margin:0 auto 24px}.newsletter{background:#f7f7f5;padding:48px 5%;display:flex;align-items:center;justify-content:space-between;gap:25px}.newsletter h2{font-size:25px;margin:0 0 8px;letter-spacing:-1px}.newsletter p{font-size:12px;color:#666;margin:0}.newsletter form{display:flex;max-width:440px;width:100%}.newsletter input{min-width:0;flex:1;border:1px solid #ccc;padding:14px;font-size:12px}.newsletter button{border:1px solid #080808;background:#080808;color:white;padding:0 16px;font-size:10px;font-weight:800}.footer{background:#080808;color:white;padding:32px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px}.footer p{color:#aaa;font-size:10px}.footer-links{display:flex;gap:18px;flex-wrap:wrap}.footer-links a{font-size:10px;color:#ddd}.overlay{position:fixed;inset:0;background:#0008;z-index:30;opacity:0;visibility:hidden;transition:.25s}.overlay.open{opacity:1;visibility:visible}.drawer{position:absolute;right:0;top:0;height:100%;width:min(420px,100%);background:#fff;padding:22px;display:flex;flex-direction:column;transform:translateX(100%);transition:.25s}.overlay.open .drawer{transform:none}.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ddd;padding-bottom:15px}.cart-head h2{font-size:17px;margin:0}.close{border:0;background:none;font-size:25px}.cart-items{flex:1;overflow:auto;padding:12px 0}.empty{text-align:center;color:#777;padding:50px 0;font-size:13px}.cart-item{display:grid;grid-template-columns:66px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid #eee}.cart-item img{width:66px;height:82px;object-fit:cover}.cart-item h3{font-size:10px;margin:3px 0 7px}.cart-item p{font-size:11px;color:#666;margin:0 0 8px}.qty{display:flex;align-items:center;gap:9px}.qty button{width:24px;height:24px;background:#fff;border:1px solid #ddd}.remove{border:0;background:none;text-decoration:underline;font-size:10px;padding:8px 0}.cart-foot{border-top:1px solid #ddd;padding-top:16px}.subtotal{display:flex;justify-content:space-between;font-weight:800;font-size:13px}.note{font-size:10px;color:#666;line-height:1.5}.checkout{width:100%;padding:15px;background:#080808;color:white;border:0;font-size:10px;font-weight:800;letter-spacing:1px}.toast{position:fixed;z-index:50;bottom:20px;left:50%;transform:translate(-50%,15px);background:#111;color:white;padding:13px 18px;font-size:11px;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:800px){.nav{padding:0 4%}.navlinks{gap:14px}.navlinks a{font-size:9px}.benefits{grid-template-columns:repeat(2,1fr);padding:12px 4%}.benefit{justify-content:flex-start;padding:9px 4%;border:0}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.section{padding:38px 4%}.quick-add{opacity:1;transform:none}.newsletter{align-items:flex-start;flex-direction:column}.newsletter form{max-width:none}}@media(max-width:540px){.nav{height:60px}.logo{font-size:25px}.navlinks{display:none}.menu-toggle{display:inline-block}.hero{min-height:450px;align-items:flex-end}.hero>img{object-position:60% center}.hero:after{background:linear-gradient(0deg,#000e,transparent 100%)}.hero-content{padding:35px 6%}.hero h1{font-size:59px}.hero p:not(.eyebrow){font-size:13px}.benefit{gap:7px;padding:7px 1%}.benefit .ico{font-size:18px}.benefit strong,.benefit small{font-size:9px}.section h2{font-size:25px}.tag{top:7px;left:7px;font-size:7px}.quick-add{padding:11px}.footer{align-items:flex-start;flex-direction:column}.manifesto{padding:55px 20px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIROX® Official Store | Heavyweight Streetwear India</title>
+  <!-- Cashfree JS SDK v3 -->
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090b;
+      --surface: #121215;
+      --surface-2: #1c1c21;
+      --border: #27272a;
+      --text: #fafafa;
+      --muted: #a1a1aa;
+      --accent: #d4ff00;
+      --accent-dark: #b8de00;
+      --danger: #ef4444;
+      --success: #22c55e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    /* Announcement Bar */
+    .announcement-bar {
+      background: var(--accent);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.55rem 1rem;
+      text-align: center;
+    }
+    /* Sticky Shopify Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(9, 9, 11, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-links button {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-links button.active, .nav-links button:hover { color: var(--accent); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .search-input {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      width: 200px;
+    }
+    .cart-trigger {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.55rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .cart-badge {
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      padding: 0.1rem 0.45rem;
+      border-radius: 99px;
+      font-size: 0.75rem;
+    }
+
+    /* Hero Banner */
+    .hero {
+      max-width: 1320px;
+      margin: 1.5rem auto;
+      padding: 0 1.5rem;
+    }
+    .hero-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(95deg, #09090b 35%, rgba(9,9,11,0.35)),
+                  url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1600&q=80') center/cover;
+      border: 1px solid var(--border);
+      padding: 4.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 410px;
+    }
+    .hero-tag {
+      display: inline-block;
+      width: fit-content;
+      background: rgba(212, 255, 0, 0.14);
+      color: var(--accent);
+      border: 1px solid rgba(212, 255, 0, 0.4);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.08em;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.05;
+      max-width: 620px;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      color: #d4d4d8;
+      max-width: 480px;
+      margin-bottom: 1.75rem;
+      font-size: 0.98rem;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: none;
+      padding: 0.9rem 1.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      width: fit-content;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-dark); }
+
+    /* Collection Grid */
+    .section-wrap {
+      max-width: 1320px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .sort-select {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 1.75rem;
+    }
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: #3f3f46;
+    }
+    .img-wrap {
+      position: relative;
+      aspect-ratio: 4/5;
+      background: #18181b;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+    .product-card:hover .img-wrap img { transform: scale(1.05); }
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #000;
+      color: var(--accent);
+      border: 1px solid rgba(212,255,0,0.4);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+    }
+    .card-body {
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.35rem;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      cursor: pointer;
+    }
+    .card-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .price-now { font-size: 1.15rem; font-weight: 800; color: var(--text); }
+    .price-old { font-size: 0.85rem; color: var(--muted); text-decoration: line-through; }
+    .discount-pill {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .quick-sizes {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.9rem;
+    }
+    .size-chip {
+      flex: 1;
+      padding: 0.4rem 0;
+      font-size: 0.76rem;
+      font-weight: 700;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .size-chip.selected {
+      border-color: var(--accent);
+      background: rgba(212, 255, 0, 0.12);
+      color: var(--accent);
+    }
+    .add-btn {
+      margin-top: auto;
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--text);
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .add-btn:hover { background: var(--accent); }
+
+    /* Slide-over Cart Drawer & Modals */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(4px);
+      z-index: 50;
+      display: none;
+      justify-content: flex-end;
+    }
+    .overlay.open { display: flex; }
+    .drawer {
+      width: 100%;
+      max-width: 440px;
+      background: var(--surface);
+      height: 100%;
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+    .drawer-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .shipping-meter {
+      background: var(--surface-2);
+      padding: 0.75rem 1.5rem;
+      font-size: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .progress-track {
+      height: 5px;
+      background: var(--border);
+      border-radius: 99px;
+      margin-top: 0.45rem;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.3s;
+    }
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem 1.5rem;
+    }
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-item img {
+      width: 72px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .qty-box {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+    .qty-box button {
+      background: none;
+      border: none;
+      color: var(--text);
+      padding: 0.2rem 0.55rem;
+      cursor: pointer;
+    }
+    .qty-box span { padding: 0 0.5rem; font-size: 0.82rem; }
+    .drawer-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+    .coupon-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .coupon-row input {
+      flex: 1;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.55rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+    }
+    .coupon-row button {
+      background: var(--border);
+      color: var(--text);
+      border: none;
+      padding: 0 1rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0.75rem 0 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Product Detail & Checkout Center Modal */
+    .center-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(5px);
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .center-modal.open { display: flex; }
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      max-width: 820px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.75rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+    .form-grid input {
+      width: 100%;
+      padding: 0.7rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+    }
+    .full-col { grid-column: span 2; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .full-col { grid-column: span 1; }
+    }
+  </style>
 </head>
 <body>
-<div class="announcement">FREE SHIPPING ON ORDERS ABOVE ₹999</div>
-<header class="nav">
-<a class="logo" href="#home">VIROX</a>
-<nav class="navlinks"><a href="#home">HOME</a><a href="#shop">SHOP</a><a href="#collections">COLLECTIONS</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a></nav>
-<div class="actions"><button class="icon-btn" aria-label="Search" onclick="document.querySelector('#search').focus();document.querySelector('#shop').scrollIntoView({behavior:'smooth'})">⌕</button><button class="icon-btn" aria-label="Account" onclick="notify('Customer accounts will be added with the backend.')">♙</button><button class="icon-btn" aria-label="Shopping bag" onclick="openCart()">🛒<span class="count" id="cartCount">0</span></button></div>
-</header>
-<main>
-<section class="hero" id="home">
-<img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1800&q=85" alt="Streetwear fashion collection">
-<div class="hero-content"><p class="eyebrow">PREMIUM STREETWEAR</p><h1>WEAR<br>YOUR<br>STORY</h1><p>Premium printed oversized T-shirts for those who think different.</p><div class="buttons"><a class="btn primary" href="#shop">SHOP NOW&nbsp; →</a><a class="btn secondary" href="#collections">NEW DROP</a></div></div>
-</section>
-<section class="benefits">
-<div class="benefit"><span class="ico">♧</span><div><strong>FREE SHIPPING</strong><small>On orders above ₹999</small></div></div>
-<div class="benefit"><span class="ico">♢</span><div><strong>SECURE PAYMENTS</strong><small>Cashfree integration planned*</small></div></div>
-<div class="benefit"><span class="ico">▣</span><div><strong>CASH ON DELIVERY</strong><small>Planned for launch*</small></div></div>
-<div class="benefit"><span class="ico">↻</span><div><strong>EASY RETURNS</strong><small>See return policy</small></div></div>
-</section>
-<section class="section" id="shop">
-<div class="section-head"><div><p class="kicker">FEATURED COLLECTION</p><h2>BESTSELLERS</h2></div><a class="viewall" href="#collections">VIEW ALL →</a></div>
-<input class="search" id="search" type="search" placeholder="Search T-shirts..." aria-label="Search T-shirts">
-<div class="products" id="productGrid"></div>
-</section>
-<section class="manifesto" id="about"><p class="eyebrow">NOT MADE TO BLEND IN</p><h2>YOUR STYLE.<br>YOUR RULES.</h2><p>VIROX is for the ones who make their own lane. Statement graphics, relaxed fits, and everyday streetwear built around self-expression.</p><a class="btn primary" href="#shop">FIND YOUR FIT →</a></section>
-<section class="section" id="collections"><div class="section-head"><div><p class="kicker">FIND YOUR NEXT FAVOURITE</p><h2>THE GRAPHIC SERIES</h2></div></div><div class="products" id="collectionGrid"></div></section>
-<section class="newsletter" id="contact"><div><h2>GET ON THE LIST.</h2><p>New drops, fresh graphics, and VIROX updates. No noise.</p></div><form id="newsletterForm"><input type="email" required placeholder="Enter your email address" aria-label="Email address"><button type="submit">SIGN ME UP →</button></form></section>
-</main>
-<footer class="footer"><div><a class="logo" href="#home">VIROX</a><p>Premium printed streetwear. Wear your story.</p></div><div class="footer-links"><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#" onclick="notify('Add your return policy before launch.');return false">Returns</a><a href="#" onclick="notify('Add your privacy policy before launch.');return false">Privacy</a></div><p>© <span id="year"></span> VIROX. ALL RIGHTS RESERVED.</p></footer>
-<div class="overlay" id="overlay" onclick="if(event.target===this)closeCart()"><aside class="drawer" role="dialog" aria-modal="true" aria-label="Shopping bag"><div class="cart-head"><h2>YOUR BAG (<span id="drawerCount">0</span>)</h2><button class="close" onclick="closeCart()" aria-label="Close bag">×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-foot"><div class="subtotal"><span>SUBTOTAL</span><span id="subtotal">₹0</span></div><p class="note">This demo cart does not create real orders or process payments yet.</p><button class="checkout" onclick="notify('Cashfree checkout and order backend must be connected before launch.')">CONTINUE TO CHECKOUT →</button></div></aside></div>
-<div class="toast" id="toast"></div>
-<script>
-const products=[
-{id:1,name:"RAGE OVERSIZED TEE",price:699,tag:"BESTSELLER",color:"Black",image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=85"},
-{id:2,name:"FREEDOM GRAPHIC TEE",price:699,tag:"NEW DROP",color:"White",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"},
-{id:3,name:"BUTTERFLY OVERSIZED TEE",price:699,tag:"TRENDING",color:"Black",image:"https://images.unsplash.com/photo-1566206091558-7f218b696731?auto=format&fit=crop&w=700&q=85"},
-{id:4,name:"SILENT CHAOS TEE",price:699,tag:"LIMITED",color:"White",image:"https://images.unsplash.com/photo-1527719327859-c6ce80353573?auto=format&fit=crop&w=700&q=85"},
-{id:5,name:"AFTER HOURS TEE",price:749,tag:"NEW DROP",color:"Black",image:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=85"},
-{id:6,name:"NO SIGNAL TEE",price:699,tag:"EVERYDAY",color:"White",image:"https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=700&q=85"},
-{id:7,name:"OFF GRID TEE",price:799,tag:"GRAPHIC SERIES",color:"Black",image:"https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=700&q=85"},
-{id:8,name:"CORE OVERSIZED TEE",price:599,tag:"ESSENTIALS",color:"Black",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"}];
-let cart=[];try{cart=JSON.parse(localStorage.getItem("virox-cart")||"[]")}catch(e){}
-const money=n=>"₹"+n.toLocaleString("en-IN");
-function card(p){return `<article class="product-card" data-name="${p.name.toLowerCase()}"><div class="product-image-wrap"><img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy"><span class="tag">${p.tag}</span><button class="quick-add" onclick="addToCart(${p.id})">ADD TO BAG +</button></div><div class="product-meta"><div><p class="product-name">${p.name}</p><p class="price">${money(p.price)}</p></div><div class="swatches"><span class="swatch"></span><span class="swatch white"></span></div></div></article>`}
-function renderProducts(){document.querySelector("#productGrid").innerHTML=products.slice(0,4).map(card).join("");document.querySelector("#collectionGrid").innerHTML=products.slice(4).map(card).join("")}
-function addToCart(id){let p=products.find(x=>x.id===id),item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({...p,qty:1});saveCart();notify(p.name+" added to bag")}
-function saveCart(){try{localStorage.setItem("virox-cart",JSON.stringify(cart))}catch(e){}renderCart()}
-function renderCart(){let count=cart.reduce((s,p)=>s+p.qty,0);document.querySelector("#cartCount").textContent=count;document.querySelector("#drawerCount").textContent=count;document.querySelector("#subtotal").textContent=money(cart.reduce((s,p)=>s+p.price*p.qty,0));let el=document.querySelector("#cartItems");if(!cart.length){el.innerHTML='<div class="empty">Your bag is empty.<br><br><a href="#shop" onclick="closeCart()" style="color:#000;font-weight:bold">DISCOVER THE COLLECTION →</a></div>';return}el.innerHTML=cart.map(p=>`<div class="cart-item"><img src="${p.image}" alt=""><div><h3>${p.name}</h3><p>${money(p.price)} · ${p.color}</p><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><span>${p.qty}</span><button onclick="changeQty(${p.id},1)">+</button></div><button class="remove" onclick="removeItem(${p.id})">Remove</button></div><strong style="font-size:11px">${money(p.price*p.qty)}</strong></div>`).join("")}
-function changeQty(id,n){let p=cart.find(x=>x.id===id);if(!p)return;p.qty+=n;if(p.qty<1)cart=cart.filter(x=>x.id!==id);saveCart()}
-function removeItem(id){cart=cart.filter(x=>x.id!==id);saveCart()}
-function openCart(){document.querySelector("#overlay").classList.add("open");document.body.style.overflow="hidden"}
-function closeCart(){document.querySelector("#overlay").classList.remove("open");document.body.style.overflow=""}
-let toastTimer;function notify(msg){let t=document.querySelector("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2600)}
-document.querySelector("#search").addEventListener("input",e=>{let q=e.target.value.toLowerCase();document.querySelectorAll("#productGrid .product-card").forEach(c=>c.style.display=c.dataset.name.includes(q)?"":"none")});
-document.querySelector("#newsletterForm").addEventListener("submit",e=>{e.preventDefault();notify("Thanks! Newsletter signup will work after backend integration.");e.target.reset()});
-document.querySelector("#year").textContent=new Date().getFullYear();renderProducts();renderCart();
-</script>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    FREE EXPRESS SHIPPING ON ORDERS ABOVE ₹1,500 • USE CODE "VIROX10" FOR 10% OFF FIRST DROP
+  </div>
+
+  <!-- Sticky Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">VIROX<span>.</span></a>
+      <ul class="nav-links">
+        <li><button class="active" onclick="filterCategory('ALL', this)">All Drops</button></li>
+        <li><button onclick="filterCategory('Acid Wash', this)">Acid Wash</button></li>
+        <li><button onclick="filterCategory('Graphic Drops', this)">Graphic Tees</button></li>
+        <li><button onclick="filterCategory('Core Essentials', this)">240 GSM Core</button></li>
+      </ul>
+      <div class="nav-actions">
+        <input type="text" id="search-input" class="search-input" placeholder="Search tees, GSM..." oninput="renderCatalog()" />
+        <button class="cart-trigger" onclick="toggleCart(true)">
+          BAG <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-card">
+      <span class="hero-tag">AUTUMN / WINTER ARCHIVE DROP</span>
+      <h1>HEAVYWEIGHT 240–260 GSM STREET ARCHITECTURE.</h1>
+      <p>Engineered in India with pre-shrunk combed terry cotton, high-density puff inks, and enzyme vintage washes.</p>
+      <button class="btn-primary" onclick="document.getElementById('catalog-section').scrollIntoView({behavior:'smooth'})">
+        Explore The Drop
+      </button>
+    </div>
+  </section>
+
+  <!-- Product Grid Section -->
+  <main class="section-wrap" id="catalog-section">
+    <div class="toolbar">
+      <div>
+        <h2 style="font-family:'Syne',sans-serif; font-size:1.5rem;">Heavyweight T-Shirts</h2>
+        <p style="color:var(--muted); font-size:0.85rem;" id="result-count">Showing all products</p>
+      </div>
+      <div style="display:flex; gap:0.75rem; align-items:center;">
+        <button onclick="openSizeGuide()" style="background:none; border:1px solid var(--border); color:var(--text); padding:0.5rem 0.85rem; border-radius:6px; cursor:pointer; font-size:0.82rem;">
+          📏 Size Guide
+        </button>
+        <select id="sort-select" class="sort-select" onchange="renderCatalog()">
+          <option value="featured">Sort: Featured</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="product-grid" id="product-grid"></div>
+  </main>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div class="overlay" id="cart-overlay" onclick="if(event.target===this) toggleCart(false)">
+    <div class="drawer">
+      <div class="drawer-header">
+        <h3 style="font-family:'Syne',sans-serif;">YOUR BAG</h3>
+        <button onclick="toggleCart(false)" style="background:none; border:none; color:var(--text); font-size:1.3rem; cursor:pointer;">✕</button>
+      </div>
+      <div class="shipping-meter">
+        <span id="shipping-msg">Add ₹1,500 more for FREE Express Shipping</span>
+        <div class="progress-track"><div class="progress-fill" id="shipping-bar"></div></div>
+      </div>
+      <div class="drawer-body" id="cart-items"></div>
+      <div class="drawer-footer">
+        <div class="coupon-row">
+          <input type="text" id="coupon-input" placeholder="Promo code (VIROX10 or DROP200)" />
+          <button onclick="applyCoupon()">APPLY</button>
+        </div>
+        <div class="summary-line"><span>Subtotal</span><span id="sum-subtotal">₹0</span></div>
+        <div class="summary-line"><span>Discount</span><span id="sum-discount" style="color:var(--accent);">-₹0</span></div>
+        <div class="summary-line"><span>Shipping</span><span id="sum-shipping">₹99</span></div>
+        <div class="summary-total"><span>Total (Incl. GST)</span><span id="sum-total">₹0</span></div>
+        <button class="btn-primary" style="width:100%;" onclick="openCheckoutModal()">
+          PROCEED TO CASHFREE CHECKOUT
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shipping & Cashfree Payment Checkout Modal -->
+  <div class="center-modal" id="checkout-modal" onclick="if(event.target===this) closeCheckoutModal()">
+    <div class="modal-box" style="max-width:540px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <h3 style="font-family:'Syne',sans-serif;">EXPRESS CHECKOUT • CASHFREE PG</h3>
+        <button onclick="closeCheckoutModal()" style="background:none; border:none; color:var(--text); font-size:1.2rem; cursor:pointer;">✕</button>
+      </div>
+      <p style="font-size:0.83rem; color:var(--muted); margin-bottom:1rem;">
+        Supports UPI (GPay, PhonePe, Paytm), Cards, NetBanking & Wallets via Cashfree v3 SDK.
+      </p>
+      <form id="customer-checkout-form">
+        <div class="form-grid">
+          <input class="full-col" type="text" id="cust-name" placeholder="Full Name *" required />
+          <input type="email" id="cust-email" placeholder="Email Address *" required />
+          <input type="tel" id="cust-phone" placeholder="10-Digit Mobile Number *" pattern="[0-9]{10}" required />
+          <input class="full-col" type="text" id="cust-address" placeholder="House No, Street, Area *" required />
+          <input type="text" id="cust-city" placeholder="City *" required />
+          <input type="text" id="cust-pincode" placeholder="6-Digit Pincode *" pattern="[0-9]{6}" required />
+        </div>
+        <div id="checkout-status" style="margin-top:1rem; font-size:0.85rem; display:none; padding:0.75rem; border-radius:6px;"></div>
+        <button type="submit" id="cf-submit-btn" class="btn-primary" style="width:100%; margin-top:1.25rem;">
+          PAY NOW WITH CASHFREE
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Size Guide Modal -->
+  <div class="center-modal" id="size-modal" onclick="if(event.target===this) this.classList.remove('open')">
+    <div class="modal-box" style="max-width:480px;">
+      <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+        <h3 style="font-family:'Syne',sans-serif;">VIROX OVERSIZED FIT GUIDE (INCHES)</h3>
+        <button onclick="document.getElementById('size-modal').classList.remove('open')" style="background:none; border:none; color:var(--text); cursor:pointer;">✕</button>
+      </div>
+      <table style="width:100%; border-collapse:collapse; font-size:0.85rem; text-align:left;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border); color:var(--accent);">
+            <th style="padding:0.6rem;">Size</th>
+            <th style="padding:0.6rem;">Chest</th>
+            <th style="padding:0.6rem;">Length</th>
+            <th style="padding:0.6rem;">Shoulder</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.6rem;">S</td><td>42"</td><td>27.5"</td><td>20.5"</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.6rem;">M</td><td>44"</td><td>28.5"</td><td>21.5"</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.6rem;">L</td><td>46"</td><td>29.5"</td><td>22.5"</td></tr>
+          <tr><td style="padding:0.6rem;">XL</td><td>48"</td><td>30.5"</td><td>23.5"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const cashfree = Cashfree({ mode: 'sandbox' });
+
+    // Fallback catalog if opened directly without running server.js
+    const FALLBACK_CATALOG = [
+      {
+        id: 'vrx-01',
+        sku: 'VRX-240-ACID-BLK',
+        title: 'Virox Distressed Acid Wash Heavy Tee',
+        subtitle: '240 GSM Combed French Terry • Boxy Drop-Shoulder',
+        price: 1399,
+        compareAtPrice: 1999,
+        category: 'Acid Wash',
+        badge: 'BESTSELLER',
+        rating: 4.9,
+        reviewsCount: 142,
+        colors: ['Vintage Charcoal', 'Washed Cobalt'],
+        sizes: ['S', 'M', 'L', 'XL'],
+        images: ['https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=85']
+      },
+      {
+        id: 'vrx-02',
+        sku: 'VRX-260-PUFF-WHT',
+        title: 'Virox Cyber Sigilism 3D Puff Print Tee',
+        subtitle: '260 GSM Heavy Jersey • High-Density Raised Ink',
+        price: 1599,
+        compareAtPrice: 2299,
+        category: 'Graphic Drops',
+        badge: 'LIMITED DROP',
+        rating: 4.8,
+        reviewsCount: 98,
+        colors: ['Bone White', 'Obsidian Black'],
+        sizes: ['S', 'M', 'L', 'XL'],
+        images: ['https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=900&q=85']
+      },
+      {
+        id: 'vrx-03',
+        sku: 'VRX-240-CORE-OLI',
+        title: 'Virox Core Blank Heavyweight Tee',
+        subtitle: '240 GSM Bio-Washed Cotton • Everyday Street Fit',
+        price: 999,
+        compareAtPrice: 1499,
+        category: 'Core Essentials',
+        badge: 'ESSENTIAL',
+        rating: 4.9,
+        reviewsCount: 215,
+        colors: ['Tactical Olive', 'Jet Black'],
+        sizes: ['S', 'M', 'L', 'XL'],
+        images: ['https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=85']
+      },
+      {
+        id: 'vrx-04',
+        sku: 'VRX-250-CHROME-BLK',
+        title: 'Virox Liquid Chrome Syndicate Tee',
+        subtitle: '250 GSM Heavyweight • Metallic Foil Screenprint',
+        price: 1699,
+        compareAtPrice: 2499,
+        category: 'Graphic Drops',
+        badge: 'NEW ARRIVAL',
+        rating: 5.0,
+        reviewsCount: 64,
+        colors: ['Pitch Black'],
+        sizes: ['S', 'M', 'L', 'XL'],
+        images: ['https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=85']
+      }
+    ];
+
+    let catalog = [];
+    let selectedCategory = 'ALL';
+    let selectedSizes = {};
+    let cart = JSON.parse(localStorage.getItem('virox_cart') || '[]');
+    let activeCoupon = '';
+
+    async function initStore() {
+      try {
+        const res = await fetch('/api/products');
+        catalog = res.ok ? await res.json() : FALLBACK_CATALOG;
+      } catch {
+        catalog = FALLBACK_CATALOG;
+      }
+      catalog.forEach(p => { selectedSizes[p.id] = 'M'; });
+      renderCatalog();
+      renderCart();
+      checkUrlOrderReturn();
+    }
+
+    function filterCategory(cat, btn) {
+      selectedCategory = cat;
+      document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCatalog();
+    }
+
+    function selectCardSize(productId, size) {
+      selectedSizes[productId] = size;
+      renderCatalog();
+    }
+
+    function renderCatalog() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const sort = document.getElementById('sort-select').value;
+
+      let filtered = catalog.filter(p => {
+        const matchCat = selectedCategory === 'ALL' || p.category === selectedCategory;
+        const matchQuery = p.title.toLowerCase().includes(query) || p.subtitle.toLowerCase().includes(query);
+        return matchCat && matchQuery;
+      });
+
+      if (sort === 'low') filtered.sort((a, b) => a.price - b.price);
+      if (sort === 'high') filtered.sort((a, b) => b.price - a.price);
+
+      document.getElementById('result-count').textContent = `Showing ${filtered.length} heavyweight styles`;
+
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = filtered.map(p => {
+        const savePct = Math.round(((p.compareAtPrice - p.price) / p.compareAtPrice) * 100);
+        const currentSize = selectedSizes[p.id] || 'M';
+        return `
+          <div class="product-card">
+            <div class="img-wrap">
+              <span class="badge">${p.badge}</span>
+              <img src="${p.images[0]}" alt="${p.title}" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <div class="card-meta">
+                <span>${p.category}</span>
+                <span>★ ${p.rating} (${p.reviewsCount})</span>
+              </div>
+              <div class="card-title">${p.title}</div>
+              <div class="card-sub">${p.subtitle}</div>
+              <div class="price-row">
+                <span class="price-now">₹${p.price.toLocaleString('en-IN')}</span>
+                <span class="price-old">₹${p.compareAtPrice.toLocaleString('en-IN')}</span>
+                <span class="discount-pill">${savePct}% OFF</span>
+              </div>
+              <div class="quick-sizes">
+                ${p.sizes.map(s => `
+                  <button class="size-chip ${currentSize === s ? 'selected' : ''}" onclick="selectCardSize('${p.id}', '${s}')">${s}</button>
+                `).join('')}
+              </div>
+              <button class="add-btn" onclick="addToCart('${p.id}')">
+                Add to Bag • Size ${currentSize}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function addToCart(productId) {
+      const product = catalog.find(p => p.id === productId);
+      const size = selectedSizes[productId] || 'M';
+      const color = product.colors[0];
+      const existing = cart.find(item => item.productId === productId && item.size === size);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({
+          productId: product.id,
+          title: product.title,
+          price: product.price,
+          image: product.images[0],
+          size,
+          color,
+          quantity: 1
+        });
+      }
+      saveCart();
+      toggleCart(true);
+    }
+
+    function updateQty(index, delta) {
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) cart.splice(index, 1);
+      saveCart();
+    }
+
+    function saveCart() {
+      localStorage.setItem('virox_cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById('coupon-input').value.trim().toUpperCase();
+      if (code === 'VIROX10' || code === 'DROP200') {
+        activeCoupon = code;
+        renderCart();
+      } else {
+        alert('Invalid code. Try VIROX10 (10% Off) or DROP200 (₹200 Off).');
+      }
+    }
+
+    function getCartTotals() {
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      let discount = 0;
+      if (activeCoupon === 'VIROX10') discount = Math.round(subtotal * 0.10);
+      if (activeCoupon === 'DROP200' && subtotal >= 999) discount = 200;
+      const shipping = subtotal === 0 ? 0 : (subtotal - discount >= 1500 ? 0 : 99);
+      const total = Math.max(0, subtotal - discount + shipping);
+      return { subtotal, discount, shipping, total };
+    }
+
+    function renderCart() {
+      const count = cart.reduce((sum, i) => sum + i.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+
+      const { subtotal, discount, shipping, total } = getCartTotals();
+      const freeThreshold = 1500;
+      const rem = Math.max(0, freeThreshold - (subtotal - discount));
+      document.getElementById('shipping-msg').textContent = rem === 0 && subtotal > 0
+        ? 'Unlocked FREE Express Shipping!'
+        : `Add ₹${rem.toLocaleString('en-IN')} more for FREE Express Shipping`;
+      document.getElementById('shipping-bar').style.width = `${Math.min(100, ((subtotal - discount) / freeThreshold) * 100)}%`;
+
+      const container = document.getElementById('cart-items');
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="color:var(--muted); text-align:center; margin-top:3rem;">Your Virox bag is empty.</p>`;
+      } else {
+        container.innerHTML = cart.map((item, idx) => `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.title}" />
+            <div style="flex:1;">
+              <div style="font-weight:700; font-size:0.9rem;">${item.title}</div>
+              <div style="color:var(--muted); font-size:0.78rem;">Size: ${item.size} • ${item.color}</div>
+              <div style="font-weight:700; margin-top:0.25rem;">₹${(item.price * item.quantity).toLocaleString('en-IN')}</div>
+              <div class="qty-box">
+                <button onclick="updateQty(${idx}, -1)">−</button>
+                <span>${item.quantity}</span>
+                <button onclick="updateQty(${idx}, 1)">+</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('sum-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+      document.getElementById('sum-discount').textContent = `-₹${discount.toLocaleString('en-IN')}`;
+      document.getElementById('sum-shipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
+      document.getElementById('sum-total').textContent = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    function toggleCart(open) {
+      document.getElementById('cart-overlay').classList.toggle('open', open);
+    }
+
+    function openSizeGuide() {
+      document.getElementById('size-modal').classList.add('open');
+    }
+
+    function openCheckoutModal() {
+      if (!cart.length) return alert('Add a Virox T-shirt to your bag first.');
+      toggleCart(false);
+      document.getElementById('checkout-modal').classList.add('open');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkout-modal').classList.remove('open');
+    }
+
+    // Trigger Cashfree Payment Gateway
+    document.getElementById('customer-checkout-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('cf-submit-btn');
+      const statusEl = document.getElementById('checkout-status');
+      btn.disabled = true;
+      btn.textContent = 'INITIALIZING CASHFREE SESSION...';
+
+      const customer = {
+        name: document.getElementById('cust-name').value,
+        email: document.getElementById('cust-email').value,
+        phone: document.getElementById('cust-phone').value,
+        address: document.getElementById('cust-address').value,
+        city: document.getElementById('cust-city').value,
+        pincode: document.getElementById('cust-pincode').value
+      };
+
+      try {
+        const res = await fetch('/api/cashfree/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: cart,
+            couponCode: activeCoupon,
+            customer
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Server error');
+
+        // Launch Official Cashfree v3 Popup Checkout
+        const result = await cashfree.checkout({
+          paymentSessionId: data.payment_session_id,
+          redirectTarget: '_modal'
+        });
+
+        if (result.error) {
+          throw new Error(result.error.message);
+        }
+
+        if (result.paymentDetails) {
+          const verifyRes = await fetch(`/api/cashfree/verify/${data.order_id}`);
+          const verifyData = await verifyRes.json();
+          statusEl.style.display = 'block';
+          statusEl.style.background = 'rgba(34,197,94,0.15)';
+          statusEl.style.color = '#22c55e';
+          statusEl.textContent = `Order ${verifyData.order_id} Confirmed! Status: ${verifyData.order_status}`;
+          cart = [];
+          saveCart();
+        }
+      } catch (err) {
+        statusEl.style.display = 'block';
+        statusEl.style.background = 'rgba(239,68,68,0.15)';
+        statusEl.style.color = '#ef4444';
+        statusEl.textContent = `Cashfree Notice: ${err.message}. Ensure CASHFREE_APP_ID & CASHFREE_SECRET_KEY are set in .env.`;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'PAY NOW WITH CASHFREE';
+      }
+    });
+
+    async function checkUrlOrderReturn() {
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get('order_id');
+      if (orderId) {
+        const res = await fetch(`/api/cashfree/verify/${orderId}`);
+        if (res.ok) {
+          const data = await res.json();
+          alert(`Virox Order ${data.order_id} Payment Status: ${data.order_status}`);
+        }
+      }
+    }
+
+    initStore();
+  </script>
 </body>
 </html>

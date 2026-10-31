@@ -1,974 +1,1408 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VIROX® Official Store | Heavyweight Streetwear India</title>
-  <!-- Cashfree JS SDK v3 -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="VIROX premium printed oversized T-shirts and streetwear. Wear your story.">
+  <title>VIROX® — Official Heavyweight Streetwear Store</title>
+  <!-- Official Cashfree Payments JS SDK v3 -->
   <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #09090b;
-      --surface: #121215;
-      --surface-2: #1c1c21;
-      --border: #27272a;
-      --text: #fafafa;
-      --muted: #a1a1aa;
-      --accent: #d4ff00;
-      --accent-dark: #b8de00;
-      --danger: #ef4444;
-      --success: #22c55e;
+      --black: #080808;
+      --white: #ffffff;
+      --grey: #777777;
+      --lime: #d8ff3e;
+      --line: #e6e6e6;
+      --bg-soft: #f7f7f5;
+      --green: #16a34a;
+      --red: #dc2626;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.5;
-      overflow-x: hidden;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--black); font-family: Arial, Helvetica, sans-serif; background: #fff; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; cursor: pointer; }
+    input, select, textarea { cursor: text; }
+    .logo, .hero h1, .section h2, .manifesto h2, .newsletter h2, .pdp-title, .footer-brand h3 {
+      font-family: 'Space Grotesk', Arial, sans-serif;
     }
-    /* Announcement Bar */
-    .announcement-bar {
-      background: var(--accent);
-      color: #000;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.55rem 1rem;
+
+    /* Announcement Marquee */
+    .announcement {
+      background: var(--black);
+      color: #fff;
       text-align: center;
+      padding: 11px 16px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.6px;
+      border-bottom: 1px solid #1e1e1e;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
     }
-    /* Sticky Shopify Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(9, 9, 11, 0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
+    .announcement span.accent { color: var(--lime); }
+
+    /* Sticky Navigation */
+    .nav {
+      height: 76px;
+      background: var(--black);
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      padding: 0 5%;
+      position: sticky;
+      top: 0;
+      z-index: 25;
     }
-    .logo {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-decoration: none;
-      color: var(--text);
-    }
-    .logo span { color: var(--accent); }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-      list-style: none;
-    }
-    .nav-links button {
+    .nav-left { display: flex; align-items: center; gap: 14px; }
+    .menu-toggle {
+      display: none;
       background: none;
-      border: none;
-      color: var(--muted);
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: color 0.2s;
+      border: 1px solid #333;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 14px;
     }
-    .nav-links button.active, .nav-links button:hover { color: var(--accent); }
-    .nav-actions {
-      display: flex;
+    .logo { font-size: 32px; letter-spacing: -2px; font-weight: 900; }
+    .logo sup { font-size: 12px; color: var(--lime); letter-spacing: 0; }
+    .navlinks { display: flex; gap: 28px; }
+    .navlinks a { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; transition: color .2s; }
+    .navlinks a:hover, .navlinks a.active { color: var(--lime); }
+    .actions { display: flex; align-items: center; gap: 18px; }
+    .icon-btn {
+      border: 0;
+      background: none;
+      color: #fff;
+      font-size: 18px;
+      position: relative;
+      display: inline-flex;
       align-items: center;
-      gap: 1rem;
+      justify-content: center;
+      padding: 4px;
     }
-    .search-input {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.5rem 0.85rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      width: 200px;
-    }
-    .cart-trigger {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.55rem 1rem;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .cart-badge {
-      background: var(--accent);
+    .icon-btn:hover { color: var(--lime); }
+    .count {
+      position: absolute;
+      right: -7px;
+      top: -5px;
+      border-radius: 50%;
+      background: var(--lime);
       color: #000;
+      font-size: 10px;
       font-weight: 800;
-      padding: 0.1rem 0.45rem;
-      border-radius: 99px;
-      font-size: 0.75rem;
+      min-width: 17px;
+      height: 17px;
+      display: grid;
+      place-items: center;
     }
 
     /* Hero Banner */
     .hero {
-      max-width: 1320px;
-      margin: 1.5rem auto;
-      padding: 0 1.5rem;
-    }
-    .hero-card {
+      margin: 0 5%;
+      min-height: 570px;
       position: relative;
-      border-radius: 14px;
-      overflow: hidden;
-      background: linear-gradient(95deg, #09090b 35%, rgba(9,9,11,0.35)),
-                  url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1600&q=80') center/cover;
-      border: 1px solid var(--border);
-      padding: 4.5rem 3rem;
+      background: #181818;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 410px;
-    }
-    .hero-tag {
-      display: inline-block;
-      width: fit-content;
-      background: rgba(212, 255, 0, 0.14);
-      color: var(--accent);
-      border: 1px solid rgba(212, 255, 0, 0.4);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.3rem 0.75rem;
-      border-radius: 99px;
-      margin-bottom: 1rem;
-      letter-spacing: 0.08em;
-    }
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      line-height: 1.05;
-      max-width: 620px;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      color: #d4d4d8;
-      max-width: 480px;
-      margin-bottom: 1.75rem;
-      font-size: 0.98rem;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border: none;
-      padding: 0.9rem 1.75rem;
-      border-radius: 6px;
-      cursor: pointer;
-      width: fit-content;
-      transition: background 0.2s;
-    }
-    .btn-primary:hover { background: var(--accent-dark); }
-
-    /* Collection Grid */
-    .section-wrap {
-      max-width: 1320px;
-      margin: 2.5rem auto;
-      padding: 0 1.5rem;
-    }
-    .toolbar {
-      display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .sort-select {
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 0.5rem 0.9rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
-      gap: 1.75rem;
-    }
-    .product-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      color: white;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.25s, border-color 0.25s;
     }
-    .product-card:hover {
-      transform: translateY(-4px);
-      border-color: #3f3f46;
-    }
-    .img-wrap {
-      position: relative;
-      aspect-ratio: 4/5;
-      background: #18181b;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .img-wrap img {
+    .hero > img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.45s ease;
+      object-position: center 40%;
+      opacity: .84;
     }
-    .product-card:hover .img-wrap img { transform: scale(1.05); }
-    .badge {
+    .hero:after {
+      content: "";
       position: absolute;
-      top: 12px;
-      left: 12px;
-      background: #000;
-      color: var(--accent);
-      border: 1px solid rgba(212,255,0,0.4);
-      font-size: 0.68rem;
+      inset: 0;
+      background: linear-gradient(90deg, #000e, #0008 42%, transparent);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 6.5%;
+      max-width: 760px;
+    }
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      font-weight: 700;
+      margin: 0 0 18px;
+      color: var(--lime);
+    }
+    .hero h1 {
+      font-size: clamp(58px, 8vw, 108px);
+      letter-spacing: -.075em;
+      line-height: .84;
+      margin: 0 0 22px;
+      font-weight: 900;
+    }
+    .hero p:not(.eyebrow) {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #eee;
+      max-width: 360px;
+    }
+    .buttons { display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+    .btn {
+      padding: 15px 25px;
+      border: 1px solid #fff;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
       font-weight: 800;
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      letter-spacing: 0.06em;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      transition: .2s;
     }
-    .card-body {
-      padding: 1.15rem;
+    .btn.primary { background: #fff; color: #000; }
+    .btn.primary:hover { background: var(--lime); border-color: var(--lime); color: #000; }
+    .btn.secondary { color: #fff; background: transparent; }
+    .btn.secondary:hover { background: #fff; color: #000; }
+    .btn.dark { background: var(--black); color: #fff; border-color: var(--black); }
+    .btn.dark:hover { background: var(--lime); color: #000; border-color: var(--lime); }
+
+    /* Trust Benefits Bar */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 20px 5%;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .benefit {
       display: flex;
-      flex-direction: column;
-      flex: 1;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-right: 1px solid #ddd;
+      padding: 6px;
     }
-    .card-meta {
-      font-size: 0.75rem;
-      color: var(--muted);
+    .benefit:last-child { border: 0; }
+    .benefit .ico { font-size: 20px; }
+    .benefit strong { font-size: 10px; letter-spacing: .8px; display: block; }
+    .benefit small { font-size: 10px; color: #666; display: block; margin-top: 3px; }
+
+    /* Sections & Filter Bar */
+    .section { padding: 70px 5%; }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 26px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .kicker { font-size: 9px; letter-spacing: 4px; font-weight: 700; margin: 0 0 8px; color: #555; }
+    .section h2 { font-size: clamp(30px, 4vw, 42px); letter-spacing: -1.8px; margin: 0; font-weight: 900; }
+    .viewall { font-size: 10px; font-weight: 800; border-bottom: 1px solid; padding-bottom: 4px; letter-spacing: .8px; }
+
+    .filters-vx {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 0.35rem;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 26px;
+      flex-wrap: wrap;
     }
-    .card-title {
-      font-size: 1rem;
+    .chips-vx { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip-vx {
+      border: 1px solid #ddd;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 25px;
+      font-size: 10px;
       font-weight: 700;
-      margin-bottom: 0.25rem;
-      cursor: pointer;
+      letter-spacing: .8px;
+      transition: .2s;
     }
-    .card-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.85rem;
+    .chip-vx.active, .chip-vx:hover { background: var(--black); color: white; border-color: var(--black); }
+    .filter-controls { display: flex; gap: 10px; flex-wrap: wrap; width: auto; }
+    .search-vx, .sort-vx {
+      padding: 11px 14px;
+      border: 1px solid #ddd;
+      font-size: 11px;
+      background: #fff;
     }
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 0.6rem;
-      margin-bottom: 0.9rem;
-    }
-    .price-now { font-size: 1.15rem; font-weight: 800; color: var(--text); }
-    .price-old { font-size: 0.85rem; color: var(--muted); text-decoration: line-through; }
-    .discount-pill {
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 700;
-    }
-    .quick-sizes {
-      display: flex;
-      gap: 0.4rem;
-      margin-bottom: 0.9rem;
-    }
-    .size-chip {
-      flex: 1;
-      padding: 0.4rem 0;
-      font-size: 0.76rem;
-      font-weight: 700;
-      background: var(--bg);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .size-chip.selected {
-      border-color: var(--accent);
-      background: rgba(212, 255, 0, 0.12);
-      color: var(--accent);
-    }
-    .add-btn {
-      margin-top: auto;
-      width: 100%;
-      padding: 0.75rem;
-      background: var(--text);
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      font-weight: 800;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .add-btn:hover { background: var(--accent); }
+    .search-vx { width: 240px; }
 
-    /* Slide-over Cart Drawer & Modals */
+    /* Product Cards */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 32px 18px;
+    }
+    .product-card { position: relative; display: flex; flex-direction: column; }
+    .product-image-wrap {
+      aspect-ratio: .78;
+      background: #f1f1ef;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .45s ease;
+    }
+    .product-card:hover .product-image { transform: scale(1.05); }
+    .tag {
+      position: absolute;
+      top: 11px;
+      left: 11px;
+      background: var(--black);
+      color: white;
+      border-radius: 20px;
+      padding: 6px 10px;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .6px;
+    }
+    .wishlist-vx {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 32px;
+      height: 32px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      font-size: 15px;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+      transition: transform .2s;
+    }
+    .wishlist-vx.saved { background: var(--lime); color: #000; }
+    .quick-bar {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 10px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: .22s;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .product-card:hover .quick-bar { opacity: 1; transform: none; }
+    .size-row { display: flex; justify-content: center; gap: 4px; }
+    .sz-pill {
+      border: 1px solid #ddd;
+      background: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 4px 7px;
+    }
+    .sz-pill.active { background: var(--black); color: #fff; border-color: var(--black); }
+    .quick-add-btn {
+      width: 100%;
+      padding: 10px;
+      background: var(--black);
+      color: #fff;
+      border: 0;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .quick-add-btn:hover { background: var(--lime); color: #000; }
+    .product-meta { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; }
+    .product-name { font-size: 11px; font-weight: 800; margin: 0 0 4px; cursor: pointer; }
+    .product-gsm { font-size: 10px; color: #777; margin: 0 0 5px; }
+    .price-wrap { display: flex; align-items: center; gap: 7px; }
+    .price { font-size: 12px; font-weight: 800; margin: 0; }
+    .compare-price { font-size: 11px; color: #999; text-decoration: line-through; }
+    .save-tag { font-size: 9px; font-weight: 800; color: var(--green); }
+    .swatches { display: flex; gap: 5px; margin-top: 2px; }
+    .swatch { width: 13px; height: 13px; border: 1px solid #aaa; border-radius: 50%; background: #111; cursor: pointer; }
+    .swatch.white { background: #fff; }
+    .swatch.charcoal { background: #444; }
+    .swatch.active { outline: 2px solid var(--black); outline-offset: 1px; }
+
+    /* Editorial Split Section */
+    .editorial-vx {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #f3f3f0;
+      margin: 0 5%;
+    }
+    .editorial-vx img { width: 100%; height: 100%; min-height: 400px; object-fit: cover; }
+    .editorial-vx-copy {
+      padding: 9%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .editorial-vx-copy h2 {
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: .92;
+      letter-spacing: -3px;
+      margin: 0 0 18px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .editorial-vx-copy p { font-size: 13px; color: #555; line-height: 1.8; max-width: 380px; margin-bottom: 22px; }
+
+    /* Shop By Mood Cards */
+    .collection-vx { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .collection-vx a {
+      height: 310px;
+      position: relative;
+      overflow: hidden;
+      background: #ddd;
+      color: white;
+      display: block;
+    }
+    .collection-vx img { width: 100%; height: 100%; object-fit: cover; transition: .45s; }
+    .collection-vx a:hover img { transform: scale(1.05); }
+    .collection-vx a:after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #000b, transparent 65%); }
+    .collection-vx span {
+      position: absolute;
+      z-index: 1;
+      left: 20px;
+      bottom: 20px;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Manifesto Banner */
+    .manifesto { background: var(--black); color: white; text-align: center; padding: 80px 20px; }
+    .manifesto h2 { font-size: clamp(34px, 5vw, 60px); line-height: .96; letter-spacing: -2px; margin: 0 auto 18px; }
+    .manifesto p { font-size: 13px; line-height: 1.7; color: #aaa; max-width: 490px; margin: 0 auto 28px; }
+
+    /* Newsletter */
+    .newsletter {
+      background: var(--bg-soft);
+      padding: 58px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      border-top: 1px solid var(--line);
+    }
+    .newsletter h2 { font-size: 28px; margin: 0 0 8px; letter-spacing: -1px; }
+    .newsletter p { font-size: 12px; color: #666; margin: 0; }
+    .newsletter form { display: flex; max-width: 450px; width: 100%; }
+    .newsletter input { min-width: 0; flex: 1; border: 1px solid #ccc; padding: 15px; font-size: 12px; background: #fff; }
+    .newsletter button { border: 1px solid var(--black); background: var(--black); color: white; padding: 0 20px; font-size: 10px; font-weight: 800; letter-spacing: 1px; }
+    .newsletter button:hover { background: var(--lime); color: #000; border-color: var(--lime); }
+
+    /* Full Multi-Column Shopify Footer */
+    .footer {
+      background: var(--black);
+      color: #fff;
+      padding: 64px 5% 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      padding-bottom: 44px;
+      border-bottom: 1px solid #222;
+    }
+    .footer-brand p { color: #999; font-size: 12px; line-height: 1.7; max-width: 300px; margin: 12px 0 18px; }
+    .footer-col h4 { font-size: 10px; letter-spacing: 2px; color: var(--lime); margin: 0 0 16px; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .footer-col a, .footer-col button {
+      background: none;
+      border: 0;
+      padding: 0;
+      color: #ccc;
+      font-size: 11px;
+      text-align: left;
+    }
+    .footer-col a:hover, .footer-col button:hover { color: var(--lime); }
+    .payment-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+    .pay-pill {
+      border: 1px solid #333;
+      padding: 5px 9px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #ddd;
+      border-radius: 3px;
+    }
+    .footer-bottom {
+      padding-top: 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: #777;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Slide-Over Drawers & Center Modals */
     .overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(4px);
-      z-index: 50;
-      display: none;
-      justify-content: flex-end;
+      background: rgba(0,0,0,.62);
+      z-index: 40;
+      opacity: 0;
+      visibility: hidden;
+      transition: .25s;
     }
-    .overlay.open { display: flex; }
+    .overlay.open { opacity: 1; visibility: visible; }
     .drawer {
-      width: 100%;
-      max-width: 440px;
-      background: var(--surface);
+      position: absolute;
+      right: 0;
+      top: 0;
       height: 100%;
-      border-left: 1px solid var(--border);
+      width: min(440px, 100%);
+      background: #fff;
+      padding: 22px;
       display: flex;
       flex-direction: column;
+      transform: translateX(100%);
+      transition: .28s;
     }
-    .drawer-header {
-      padding: 1.25rem 1.5rem;
-      border-bottom: 1px solid var(--border);
+    .overlay.open .drawer { transform: none; }
+    .cart-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 14px;
     }
-    .shipping-meter {
-      background: var(--surface-2);
-      padding: 0.75rem 1.5rem;
-      font-size: 0.8rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .progress-track {
-      height: 5px;
-      background: var(--border);
-      border-radius: 99px;
-      margin-top: 0.45rem;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      width: 0%;
-      transition: width 0.3s;
-    }
-    .drawer-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1.25rem 1.5rem;
-    }
-    .cart-item {
-      display: flex;
-      gap: 1rem;
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .cart-item img {
-      width: 72px;
-      height: 90px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-    .qty-box {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      margin-top: 0.5rem;
-    }
-    .qty-box button {
-      background: none;
-      border: none;
-      color: var(--text);
-      padding: 0.2rem 0.55rem;
-      cursor: pointer;
-    }
-    .qty-box span { padding: 0 0.5rem; font-size: 0.82rem; }
-    .drawer-footer {
-      padding: 1.25rem 1.5rem;
-      border-top: 1px solid var(--border);
-      background: var(--surface-2);
-    }
-    .coupon-row {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    .coupon-row input {
-      flex: 1;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.55rem 0.75rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-    }
-    .coupon-row button {
-      background: var(--border);
-      color: var(--text);
-      border: none;
-      padding: 0 1rem;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.8rem;
-      cursor: pointer;
-    }
-    .summary-line {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-    .summary-total {
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--text);
-      margin: 0.75rem 0 1rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--border);
-    }
+    .cart-head h2 { font-size: 16px; letter-spacing: -.5px; margin: 0; font-family: 'Space Grotesk', sans-serif; }
+    .close { border: 0; background: none; font-size: 26px; line-height: 1; }
 
-    /* Product Detail & Checkout Center Modal */
-    .center-modal {
+    /* Free Shipping Progress Bar inside Bag */
+    .ship-progress-box {
+      background: #f5f5f3;
+      padding: 10px 12px;
+      margin-top: 12px;
+      font-size: 11px;
+    }
+    .ship-track { height: 5px; background: #ddd; margin-top: 6px; overflow: hidden; }
+    .ship-fill { height: 100%; background: var(--black); width: 0%; transition: width .3s; }
+
+    .cart-items { flex: 1; overflow: auto; padding: 12px 0; }
+    .empty { text-align: center; color: #777; padding: 55px 0; font-size: 13px; }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .cart-item img { width: 70px; height: 88px; object-fit: cover; background: #f1f1ef; }
+    .cart-item h3 { font-size: 11px; margin: 2px 0 5px; font-weight: 800; }
+    .cart-item p { font-size: 11px; color: #666; margin: 0 0 8px; }
+    .qty { display: flex; align-items: center; gap: 8px; }
+    .qty button { width: 24px; height: 24px; background: #fff; border: 1px solid #ddd; font-weight: 700; }
+    .remove { border: 0; background: none; text-decoration: underline; font-size: 10px; color: #777; padding: 6px 0 0; }
+
+    .cart-foot { border-top: 1px solid #ddd; padding-top: 14px; }
+    .promo-box { display: flex; gap: 6px; margin-bottom: 12px; }
+    .promo-box input { flex: 1; padding: 9px 10px; border: 1px solid #ccc; font-size: 11px; text-transform: uppercase; }
+    .promo-box button { background: var(--black); color: #fff; border: 0; padding: 0 14px; font-size: 10px; font-weight: 800; }
+    .sum-row { display: flex; justify-content: space-between; font-size: 11px; color: #555; margin-bottom: 6px; }
+    .subtotal { display: flex; justify-content: space-between; font-weight: 900; font-size: 14px; margin: 10px 0 14px; padding-top: 10px; border-top: 1px solid #eee; }
+    .checkout {
+      width: 100%;
+      padding: 16px;
+      background: var(--black);
+      color: white;
+      border: 0;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+    }
+    .checkout:hover { background: var(--lime); color: #000; }
+
+    /* Center Modal (PDP, Checkout, Size Chart, Order Tracker) */
+    .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.78);
-      backdrop-filter: blur(5px);
-      z-index: 60;
+      background: rgba(0,0,0,.72);
+      z-index: 45;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 20px;
     }
-    .center-modal.open { display: flex; }
-    .modal-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      max-width: 820px;
+    .modal-backdrop.open { display: flex; }
+    .modal-card {
+      background: #fff;
       width: 100%;
+      max-width: 860px;
       max-height: 90vh;
       overflow-y: auto;
-      padding: 1.75rem;
+      position: relative;
+      padding: 28px;
     }
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-      margin-top: 1rem;
+    .modal-close {
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      background: none;
+      border: 0;
+      font-size: 28px;
     }
-    .form-grid input {
+    .pdp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .pdp-main-img { width: 100%; aspect-ratio: .82; object-fit: cover; background: #f1f1ef; }
+    .pdp-title { font-size: 26px; margin: 6px 0 8px; letter-spacing: -1px; }
+    .option-label { font-size: 10px; font-weight: 800; letter-spacing: 1px; margin: 16px 0 8px; display: flex; justify-content: space-between; }
+    .option-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .opt-btn {
+      border: 1px solid #ccc;
+      background: #fff;
+      padding: 10px 15px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .opt-btn.selected { background: var(--black); color: #fff; border-color: var(--black); }
+
+    /* Checkout Form Grid */
+    .chk-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 26px; }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .field-grid input, .field-grid select {
       width: 100%;
-      padding: 0.7rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      border-radius: 6px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      font-size: 12px;
     }
-    .full-col { grid-column: span 2; }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .form-grid { grid-template-columns: 1fr; }
-      .full-col { grid-column: span 1; }
+    .full { grid-column: span 2; }
+    .pay-method-card {
+      border: 1px solid #ccc;
+      padding: 12px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .pay-method-card.active { border: 2px solid var(--black); background: #f9f9f7; }
+
+    .toast {
+      position: fixed;
+      z-index: 60;
+      bottom: 22px;
+      left: 50%;
+      transform: translate(-50%, 15px);
+      background: var(--black);
+      color: white;
+      border-left: 4px solid var(--lime);
+      padding: 13px 20px;
+      font-size: 11px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: .2s;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 820px) {
+      .navlinks { display: none; }
+      .menu-toggle { display: inline-block; }
+      .benefits { grid-template-columns: repeat(2, 1fr); }
+      .products { grid-template-columns: repeat(2, 1fr); gap: 22px 12px; }
+      .quick-bar { opacity: 1; transform: none; }
+      .editorial-vx, .pdp-grid, .chk-grid { grid-template-columns: 1fr; }
+      .collection-vx { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .newsletter { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 540px) {
+      .hero h1 { font-size: 56px; }
+      .collection-vx { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .field-grid { grid-template-columns: 1fr; }
+      .full { grid-column: span 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Announcement Bar -->
-  <div class="announcement-bar">
-    FREE EXPRESS SHIPPING ON ORDERS ABOVE ₹1,500 • USE CODE "VIROX10" FOR 10% OFF FIRST DROP
+  <!-- Top Announcement Bar -->
+  <div class="announcement">
+    <span>FREE SHIPPING ON ORDERS ABOVE ₹999</span>
+    <span class="accent">USE CODE "VIROX10" FOR 10% OFF</span>
+    <span>240–260 GSM HEAVYWEIGHT COTTON</span>
   </div>
 
-  <!-- Sticky Navigation -->
-  <header>
-    <div class="nav-container">
-      <a href="#" class="logo">VIROX<span>.</span></a>
-      <ul class="nav-links">
-        <li><button class="active" onclick="filterCategory('ALL', this)">All Drops</button></li>
-        <li><button onclick="filterCategory('Acid Wash', this)">Acid Wash</button></li>
-        <li><button onclick="filterCategory('Graphic Drops', this)">Graphic Tees</button></li>
-        <li><button onclick="filterCategory('Core Essentials', this)">240 GSM Core</button></li>
-      </ul>
-      <div class="nav-actions">
-        <input type="text" id="search-input" class="search-input" placeholder="Search tees, GSM..." oninput="renderCatalog()" />
-        <button class="cart-trigger" onclick="toggleCart(true)">
-          BAG <span class="cart-badge" id="cart-count">0</span>
-        </button>
-      </div>
+  <!-- Sticky Header -->
+  <header class="nav">
+    <div class="nav-left">
+      <button class="menu-toggle" onclick="toggleMobileNav()" aria-label="Menu">☰</button>
+      <a class="logo" href="#home">VIROX<sup>®</sup></a>
+    </div>
+    <nav class="navlinks" id="mainNav">
+      <a href="#home">HOME</a>
+      <a href="#shop">SHOP ALL</a>
+      <a href="#new-drop">DROP 001</a>
+      <a href="#collections">GRAPHIC SERIES</a>
+      <a href="#about">MANIFESTO</a>
+      <a href="#" onclick="openSizeChart();return false;">SIZE GUIDE</a>
+    </nav>
+    <div class="actions">
+      <button class="icon-btn" title="Search" onclick="document.querySelector('#search').focus();document.querySelector('#shop').scrollIntoView({behavior:'smooth'})">⌕</button>
+      <button class="icon-btn" title="Track Order" onclick="openOrderLookup()">📦</button>
+      <button class="icon-btn" title="Wishlist" onclick="openWishlist()">♡<span class="count" id="wishCount">0</span></button>
+      <button class="icon-btn" title="Shopping Bag" onclick="openCart()">🛒<span class="count" id="cartCount">0</span></button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-card">
-      <span class="hero-tag">AUTUMN / WINTER ARCHIVE DROP</span>
-      <h1>HEAVYWEIGHT 240–260 GSM STREET ARCHITECTURE.</h1>
-      <p>Engineered in India with pre-shrunk combed terry cotton, high-density puff inks, and enzyme vintage washes.</p>
-      <button class="btn-primary" onclick="document.getElementById('catalog-section').scrollIntoView({behavior:'smooth'})">
-        Explore The Drop
-      </button>
-    </div>
-  </section>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1800&q=85" alt="VIROX Streetwear Collection">
+      <div class="hero-content">
+        <p class="eyebrow">INDEPENDENT STREETWEAR · EST. 2024</p>
+        <h1>MAKE<br>YOUR<br>MARK.</h1>
+        <p>Premium 240–260 GSM printed oversized T-shirts engineered for those who think different.</p>
+        <div class="buttons">
+          <a class="btn primary" href="#shop">SHOP NOW &nbsp;→</a>
+          <a class="btn secondary" href="#new-drop">EXPLORE DROP 001</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- Product Grid Section -->
-  <main class="section-wrap" id="catalog-section">
-    <div class="toolbar">
+    <!-- Benefits Bar -->
+    <section class="benefits">
+      <div class="benefit"><span class="ico">♧</span><div><strong>FREE EXPRESS SHIPPING</strong><small>On all orders above ₹999</small></div></div>
+      <div class="benefit"><span class="ico">♢</span><div><strong>CASHFREE VERIFIED PG</strong><small>Instant UPI, Cards & NetBanking</small></div></div>
+      <div class="benefit"><span class="ico">▣</span><div><strong>CASH ON DELIVERY</strong><small>Available pan-India across pincodes</small></div></div>
+      <div class="benefit"><span class="ico">↻</span><div><strong>7-DAY EASY EXCHANGE</strong><small>Hassle-free size swaps & returns</small></div></div>
+    </section>
+
+    <!-- Main Shop & Filter Section -->
+    <section class="section" id="shop">
+      <div class="section-head">
+        <div>
+          <p class="kicker">FEATURED COLLECTION</p>
+          <h2>ALL HEAVYWEIGHT TEES</h2>
+        </div>
+        <button class="viewall" style="background:none;border:0;border-bottom:1px solid #000;cursor:pointer;" onclick="openSizeChart()">VIEW OVERSIZED SIZE CHART →</button>
+      </div>
+
+      <div class="filters-vx">
+        <div class="chips-vx">
+          <button class="chip-vx active" onclick="setFilter('ALL', this)">ALL TEES (8)</button>
+          <button class="chip-vx" onclick="setFilter('BESTSELLER', this)">BESTSELLERS</button>
+          <button class="chip-vx" onclick="setFilter('NEW DROP', this)">NEW DROPS</button>
+          <button class="chip-vx" onclick="setFilter('GRAPHIC SERIES', this)">GRAPHIC SERIES</button>
+          <button class="chip-vx" onclick="setFilter('ESSENTIALS', this)">ESSENTIALS</button>
+        </div>
+        <div class="filter-controls">
+          <input class="search-vx" id="search" type="search" placeholder="Search tee, GSM, color..." oninput="renderProducts()">
+          <select class="sort-vx" id="sortSelect" onchange="renderProducts()">
+            <option value="featured">Sort: Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="products" id="productGrid"></div>
+    </section>
+
+    <!-- Editorial Split Banner -->
+    <section class="editorial-vx" id="new-drop">
+      <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85" alt="VIROX Drop 001 Campaign" loading="lazy">
+      <div class="editorial-vx-copy">
+        <p class="kicker">DROP 001 · THE EVERYDAY REBELLION</p>
+        <h2>NOT HERE<br>TO FIT IN.</h2>
+        <p>Relaxed drop-shoulder silhouettes. High-density puff & plastisol graphics. Crafted from pre-shrunk 240 GSM combed ring-spun cotton for zero collar sag.</p>
+        <a class="btn dark" href="#shop" onclick="setFilter('NEW DROP')">SHOP DROP 001 →</a>
+      </div>
+    </section>
+
+    <!-- Shop By Mood -->
+    <section class="section" id="collections-vx">
+      <div class="section-head">
+        <div>
+          <p class="kicker">FIND YOUR UNIFORM</p>
+          <h2>SHOP BY MOOD</h2>
+        </div>
+      </div>
+      <div class="collection-vx">
+        <a href="#shop" onclick="setFilter('GRAPHIC SERIES')">
+          <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=800&q=85" alt="Graphic tees" loading="lazy">
+          <span>GRAPHIC TEES ↗</span>
+        </a>
+        <a href="#shop" onclick="setFilter('ESSENTIALS')">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85" alt="Essentials" loading="lazy">
+          <span>240 GSM ESSENTIALS ↗</span>
+        </a>
+        <a href="#shop" onclick="setFilter('NEW DROP')">
+          <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=800&q=85" alt="New drop" loading="lazy">
+          <span>LIMITED ARCHIVE ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Brand Manifesto -->
+    <section class="manifesto" id="about">
+      <p class="eyebrow">NOT MADE TO BLEND IN</p>
+      <h2>YOUR STYLE.<br>YOUR RULES.</h2>
+      <p>VIROX is built for the ones who carve their own lane. Heavyweight fabrics, statement graphics, and architectural boxy cuts designed in India.</p>
+      <a class="btn primary" href="#shop">FIND YOUR FIT →</a>
+    </section>
+
+    <!-- Curated Graphic Series Showcase -->
+    <section class="section" id="collections">
+      <div class="section-head">
+        <div>
+          <p class="kicker">CURATED ARCHIVE</p>
+          <h2>THE GRAPHIC SERIES</h2>
+        </div>
+        <a class="viewall" href="#shop" onclick="setFilter('ALL')">VIEW FULL CATALOG →</a>
+      </div>
+      <div class="products" id="collectionGrid"></div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="contact">
       <div>
-        <h2 style="font-family:'Syne',sans-serif; font-size:1.5rem;">Heavyweight T-Shirts</h2>
-        <p style="color:var(--muted); font-size:0.85rem;" id="result-count">Showing all products</p>
+        <h2>GET ON THE DROP LIST.</h2>
+        <p>Early access to limited drops, restock alerts, and secret member codes. Zero spam.</p>
       </div>
-      <div style="display:flex; gap:0.75rem; align-items:center;">
-        <button onclick="openSizeGuide()" style="background:none; border:1px solid var(--border); color:var(--text); padding:0.5rem 0.85rem; border-radius:6px; cursor:pointer; font-size:0.82rem;">
-          📏 Size Guide
-        </button>
-        <select id="sort-select" class="sort-select" onchange="renderCatalog()">
-          <option value="featured">Sort: Featured</option>
-          <option value="low">Price: Low to High</option>
-          <option value="high">Price: High to Low</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="product-grid" id="product-grid"></div>
+      <form id="newsletterForm">
+        <input type="email" required placeholder="Enter your email address" aria-label="Email address">
+        <button type="submit">UNLOCK 10% OFF →</button>
+      </form>
+    </section>
   </main>
 
-  <!-- Slide-Over Shopping Cart Drawer -->
-  <div class="overlay" id="cart-overlay" onclick="if(event.target===this) toggleCart(false)">
-    <div class="drawer">
-      <div class="drawer-header">
-        <h3 style="font-family:'Syne',sans-serif;">YOUR BAG</h3>
-        <button onclick="toggleCart(false)" style="background:none; border:none; color:var(--text); font-size:1.3rem; cursor:pointer;">✕</button>
-      </div>
-      <div class="shipping-meter">
-        <span id="shipping-msg">Add ₹1,500 more for FREE Express Shipping</span>
-        <div class="progress-track"><div class="progress-fill" id="shipping-bar"></div></div>
-      </div>
-      <div class="drawer-body" id="cart-items"></div>
-      <div class="drawer-footer">
-        <div class="coupon-row">
-          <input type="text" id="coupon-input" placeholder="Promo code (VIROX10 or DROP200)" />
-          <button onclick="applyCoupon()">APPLY</button>
+  <!-- Full Multi-Column Shopify Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#home">VIROX<sup>®</sup></a>
+        <p>Independent Indian streetwear label specializing in 240–260 GSM oversized graphic T-shirts and heavyweight everyday essentials.</p>
+        <div class="payment-badges">
+          <span class="pay-pill">CASHFREE PG</span>
+          <span class="pay-pill">UPI / GPAY</span>
+          <span class="pay-pill">VISA / MASTERCARD</span>
+          <span class="pay-pill">CASH ON DELIVERY</span>
         </div>
-        <div class="summary-line"><span>Subtotal</span><span id="sum-subtotal">₹0</span></div>
-        <div class="summary-line"><span>Discount</span><span id="sum-discount" style="color:var(--accent);">-₹0</span></div>
-        <div class="summary-line"><span>Shipping</span><span id="sum-shipping">₹99</span></div>
-        <div class="summary-total"><span>Total (Incl. GST)</span><span id="sum-total">₹0</span></div>
-        <button class="btn-primary" style="width:100%;" onclick="openCheckoutModal()">
-          PROCEED TO CASHFREE CHECKOUT
-        </button>
       </div>
+      <div class="footer-col">
+        <h4>SHOP</h4>
+        <ul>
+          <li><a href="#shop" onclick="setFilter('ALL')">All Oversized Tees</a></li>
+          <li><a href="#shop" onclick="setFilter('BESTSELLER')">Bestsellers</a></li>
+          <li><a href="#shop" onclick="setFilter('NEW DROP')">Drop 001 Archive</a></li>
+          <li><a href="#shop" onclick="setFilter('GRAPHIC SERIES')">The Graphic Series</a></li>
+          <li><a href="#shop" onclick="setFilter('ESSENTIALS')">240 GSM Core Blanks</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SUPPORT & POLICIES</h4>
+        <ul>
+          <li><button onclick="openSizeChart()">Oversized Size Guide</button></li>
+          <li><button onclick="openOrderLookup()">Track Your Order</button></li>
+          <li><button onclick="openPolicyModal('SHIPPING & DELIVERY', 'Orders are dispatched within 24–48 hours from our warehouse. Free express shipping on all prepaid & COD orders above ₹999. Standard delivery takes 3–5 business days across India.')">Shipping Policy</button></li>
+          <li><button onclick="openPolicyModal('7-DAY EASY RETURNS & EXCHANGE', 'Unworn, unwashed items with original VIROX tags intact qualify for an instant 7-day size exchange or store credit/refund.')">Returns & Exchanges</button></li>
+          <li><button onclick="openPolicyModal('PRIVACY & TERMS', 'All payments are processed securely via 256-bit SSL encrypted Cashfree Payment Gateway. VIROX never stores your card or UPI PIN details.')">Privacy Policy</button></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>HEADQUARTERS</h4>
+        <ul>
+          <li style="color:#aaa;font-size:11px;line-height:1.6;">VIROX Apparel Studio<br>Support: support@viroxstreetwear.in<br>Mon–Sat: 10:00 AM – 7:00 PM IST</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> VIROX® STREETWEAR. ALL RIGHTS RESERVED.</span>
+      <span>POWERED BY CASHFREE PAYMENTS SDK v3</span>
+    </div>
+  </footer>
+
+  <!-- Shopping Bag Drawer -->
+  <div class="overlay" id="overlay" onclick="if(event.target===this)closeCart()">
+    <aside class="drawer" role="dialog" aria-modal="true" aria-label="Shopping bag">
+      <div class="cart-head">
+        <h2>YOUR BAG (<span id="drawerCount">0</span>)</h2>
+        <button class="close" onclick="closeCart()" aria-label="Close bag">×</button>
+      </div>
+      <div class="ship-progress-box">
+        <span id="shipMsg">Add ₹999 for FREE Express Shipping</span>
+        <div class="ship-track"><div class="ship-fill" id="shipFill"></div></div>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-foot">
+        <div class="promo-box">
+          <input type="text" id="promoInput" placeholder="Promo Code (VIROX10 / FIRST100)">
+          <button onclick="applyPromo()">APPLY</button>
+        </div>
+        <div class="sum-row"><span>Subtotal</span><span id="sumSub">₹0</span></div>
+        <div class="sum-row"><span>Discount</span><span id="sumDisc" style="color:var(--green)">-₹0</span></div>
+        <div class="sum-row"><span>Shipping</span><span id="sumShip">FREE</span></div>
+        <div class="subtotal"><span>ESTIMATED TOTAL</span><span id="subtotal">₹0</span></div>
+        <button class="checkout" onclick="openCheckoutModal()">PROCEED TO CHECKOUT →</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Product Detail Quick-View Modal (PDP) -->
+  <div class="modal-backdrop" id="pdpModal" onclick="if(event.target===this)closePdp()">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closePdp()">×</button>
+      <div class="pdp-grid" id="pdpContent"></div>
     </div>
   </div>
 
-  <!-- Shipping & Cashfree Payment Checkout Modal -->
-  <div class="center-modal" id="checkout-modal" onclick="if(event.target===this) closeCheckoutModal()">
-    <div class="modal-box" style="max-width:540px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-        <h3 style="font-family:'Syne',sans-serif;">EXPRESS CHECKOUT • CASHFREE PG</h3>
-        <button onclick="closeCheckoutModal()" style="background:none; border:none; color:var(--text); font-size:1.2rem; cursor:pointer;">✕</button>
-      </div>
-      <p style="font-size:0.83rem; color:var(--muted); margin-bottom:1rem;">
-        Supports UPI (GPay, PhonePe, Paytm), Cards, NetBanking & Wallets via Cashfree v3 SDK.
-      </p>
-      <form id="customer-checkout-form">
-        <div class="form-grid">
-          <input class="full-col" type="text" id="cust-name" placeholder="Full Name *" required />
-          <input type="email" id="cust-email" placeholder="Email Address *" required />
-          <input type="tel" id="cust-phone" placeholder="10-Digit Mobile Number *" pattern="[0-9]{10}" required />
-          <input class="full-col" type="text" id="cust-address" placeholder="House No, Street, Area *" required />
-          <input type="text" id="cust-city" placeholder="City *" required />
-          <input type="text" id="cust-pincode" placeholder="6-Digit Pincode *" pattern="[0-9]{6}" required />
+  <!-- Full Checkout & Cashfree Payment Modal -->
+  <div class="modal-backdrop" id="checkoutModal" onclick="if(event.target===this)closeCheckoutModal()">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeCheckoutModal()">×</button>
+      <p class="kicker">SECURE ENCRYPTED CHECKOUT</p>
+      <h2 style="font-family:'Space Grotesk',sans-serif;margin:0 0 20px;">SHIPPING & PAYMENT</h2>
+
+      <form id="checkoutForm" class="chk-grid">
+        <div>
+          <div class="field-grid">
+            <input class="full" type="text" id="chkName" required placeholder="Full Name *">
+            <input type="email" id="chkEmail" required placeholder="Email Address *">
+            <input type="tel" id="chkPhone" required pattern="[0-9]{10}" placeholder="10-Digit Mobile Number *">
+            <input class="full" type="text" id="chkAddress" required placeholder="House/Flat No., Building, Street, Area *">
+            <input type="text" id="chkCity" required placeholder="City *">
+            <input type="text" id="chkPincode" required pattern="[0-9]{6}" placeholder="6-Digit Pincode *">
+          </div>
+
+          <p class="option-label" style="margin-top:20px;">SELECT PAYMENT METHOD</p>
+          <div class="pay-method-card active" id="pmCashfree" onclick="selectPayMethod('CASHFREE')">
+            <div>
+              <strong style="font-size:12px;">Cashfree Payment Gateway (UPI, Cards, NetBanking)</strong>
+              <div style="font-size:10px;color:#666;margin-top:2px;">Instant verification • Google Pay, PhonePe, Paytm, Visa/Mastercard</div>
+            </div>
+            <span style="font-size:10px;font-weight:800;background:var(--lime);padding:4px 8px;">FREE SHIP</span>
+          </div>
+
+          <div class="pay-method-card" id="pmCod" onclick="selectPayMethod('COD')">
+            <div>
+              <strong style="font-size:12px;">Cash on Delivery (Pay at Doorstep)</strong>
+              <div style="font-size:10px;color:#666;margin-top:2px;">+₹49 COD handling fee applies</div>
+            </div>
+            <span style="font-size:10px;font-weight:800;">+₹49</span>
+          </div>
         </div>
-        <div id="checkout-status" style="margin-top:1rem; font-size:0.85rem; display:none; padding:0.75rem; border-radius:6px;"></div>
-        <button type="submit" id="cf-submit-btn" class="btn-primary" style="width:100%; margin-top:1.25rem;">
-          PAY NOW WITH CASHFREE
-        </button>
+
+        <div style="background:#f7f7f5;padding:20px;display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <h4 style="margin:0 0 14px;font-size:12px;letter-spacing:1px;">ORDER SUMMARY</h4>
+            <div id="chkItemsList" style="max-height:190px;overflow:auto;margin-bottom:14px;border-bottom:1px solid #ddd;padding-bottom:10px;"></div>
+            <div class="sum-row"><span>Bag Subtotal</span><span id="chkSub">₹0</span></div>
+            <div class="sum-row"><span>Promo Discount</span><span id="chkDisc" style="color:var(--green)">-₹0</span></div>
+            <div class="sum-row"><span>Shipping</span><span id="chkShip">FREE</span></div>
+            <div class="sum-row" id="chkCodRow" style="display:none;"><span>COD Fee</span><span>₹49</span></div>
+            <div class="subtotal"><span>TOTAL PAYABLE</span><span id="chkTotal">₹0</span></div>
+          </div>
+
+          <div>
+            <div id="chkStatusBox" style="display:none;padding:10px;font-size:11px;margin-bottom:10px;"></div>
+            <button type="submit" class="checkout" id="paySubmitBtn">PAY NOW VIA CASHFREE →</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
 
-  <!-- Size Guide Modal -->
-  <div class="center-modal" id="size-modal" onclick="if(event.target===this) this.classList.remove('open')">
-    <div class="modal-box" style="max-width:480px;">
-      <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
-        <h3 style="font-family:'Syne',sans-serif;">VIROX OVERSIZED FIT GUIDE (INCHES)</h3>
-        <button onclick="document.getElementById('size-modal').classList.remove('open')" style="background:none; border:none; color:var(--text); cursor:pointer;">✕</button>
-      </div>
-      <table style="width:100%; border-collapse:collapse; font-size:0.85rem; text-align:left;">
-        <thead>
-          <tr style="border-bottom:1px solid var(--border); color:var(--accent);">
-            <th style="padding:0.6rem;">Size</th>
-            <th style="padding:0.6rem;">Chest</th>
-            <th style="padding:0.6rem;">Length</th>
-            <th style="padding:0.6rem;">Shoulder</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.6rem;">S</td><td>42"</td><td>27.5"</td><td>20.5"</td></tr>
-          <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.6rem;">M</td><td>44"</td><td>28.5"</td><td>21.5"</td></tr>
-          <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.6rem;">L</td><td>46"</td><td>29.5"</td><td>22.5"</td></tr>
-          <tr><td style="padding:0.6rem;">XL</td><td>48"</td><td>30.5"</td><td>23.5"</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <!-- Size Guide / Policy / Order Lookup Generic Modal -->
+  <div class="modal-backdrop" id="infoModal" onclick="if(event.target===this)closeInfoModal()">
+    <div class="modal-card" style="max-width:560px;" id="infoModalBody"></div>
   </div>
 
-  <script>
-    const cashfree = Cashfree({ mode: 'sandbox' });
+  <div class="toast" id="toast"></div>
 
-    // Fallback catalog if opened directly without running server.js
-    const FALLBACK_CATALOG = [
-      {
-        id: 'vrx-01',
-        sku: 'VRX-240-ACID-BLK',
-        title: 'Virox Distressed Acid Wash Heavy Tee',
-        subtitle: '240 GSM Combed French Terry • Boxy Drop-Shoulder',
-        price: 1399,
-        compareAtPrice: 1999,
-        category: 'Acid Wash',
-        badge: 'BESTSELLER',
-        rating: 4.9,
-        reviewsCount: 142,
-        colors: ['Vintage Charcoal', 'Washed Cobalt'],
-        sizes: ['S', 'M', 'L', 'XL'],
-        images: ['https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=85']
-      },
-      {
-        id: 'vrx-02',
-        sku: 'VRX-260-PUFF-WHT',
-        title: 'Virox Cyber Sigilism 3D Puff Print Tee',
-        subtitle: '260 GSM Heavy Jersey • High-Density Raised Ink',
-        price: 1599,
-        compareAtPrice: 2299,
-        category: 'Graphic Drops',
-        badge: 'LIMITED DROP',
-        rating: 4.8,
-        reviewsCount: 98,
-        colors: ['Bone White', 'Obsidian Black'],
-        sizes: ['S', 'M', 'L', 'XL'],
-        images: ['https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=900&q=85']
-      },
-      {
-        id: 'vrx-03',
-        sku: 'VRX-240-CORE-OLI',
-        title: 'Virox Core Blank Heavyweight Tee',
-        subtitle: '240 GSM Bio-Washed Cotton • Everyday Street Fit',
-        price: 999,
-        compareAtPrice: 1499,
-        category: 'Core Essentials',
-        badge: 'ESSENTIAL',
-        rating: 4.9,
-        reviewsCount: 215,
-        colors: ['Tactical Olive', 'Jet Black'],
-        sizes: ['S', 'M', 'L', 'XL'],
-        images: ['https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=85']
-      },
-      {
-        id: 'vrx-04',
-        sku: 'VRX-250-CHROME-BLK',
-        title: 'Virox Liquid Chrome Syndicate Tee',
-        subtitle: '250 GSM Heavyweight • Metallic Foil Screenprint',
-        price: 1699,
-        compareAtPrice: 2499,
-        category: 'Graphic Drops',
-        badge: 'NEW ARRIVAL',
-        rating: 5.0,
-        reviewsCount: 64,
-        colors: ['Pitch Black'],
-        sizes: ['S', 'M', 'L', 'XL'],
-        images: ['https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=85']
-      }
+  <script>
+    const cashfree = typeof Cashfree !== 'undefined' ? Cashfree({ mode: "sandbox" }) : null;
+
+    // Default Catalog (Synced with server.js)
+    let products = [
+      {id:1,sku:"VRX-001",name:"RAGE OVERSIZED TEE",price:699,comparePrice:1199,tag:"BESTSELLER",category:"GRAPHIC SERIES",gsm:"240 GSM Combed Terry",colors:["Black","White"],sizes:["S","M","L","XL","XXL"],image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=85",desc:"Heavyweight 240 GSM oversized drop-shoulder silhouette with high-density puff back print and ribbed crew neck."},
+      {id:2,sku:"VRX-002",name:"FREEDOM GRAPHIC TEE",price:699,comparePrice:1199,tag:"NEW DROP",category:"NEW DROP",gsm:"240 GSM Bio-Washed",colors:["White","Black"],sizes:["S","M","L","XL"],image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85",desc:"Statement front and back screenprint crafted from 100% ring-spun cotton for zero shrinkage and all-day structure."},
+      {id:3,sku:"VRX-003",name:"BUTTERFLY OVERSIZED TEE",price:699,comparePrice:1099,tag:"TRENDING",category:"GRAPHIC SERIES",gsm:"240 GSM French Terry",colors:["Black","White"],sizes:["S","M","L","XL"],image:"https://images.unsplash.com/photo-1566206091558-7f218b696731?auto=format&fit=crop&w=700&q=85",desc:"Distressed botanical chrome artwork on a relaxed street boxy fit. Pre-shrunk with reinforced shoulder seams."},
+      {id:4,sku:"VRX-004",name:"SILENT CHAOS TEE",price:699,comparePrice:1199,tag:"LIMITED",category:"NEW DROP",gsm:"250 GSM Heavy Jersey",colors:["White","Black"],sizes:["S","M","L","XL"],image:"https://images.unsplash.com/photo-1527719327859-c6ce80353573?auto=format&fit=crop&w=700&q=85",desc:"Minimalist front branding paired with brutalist typography across the back. Strictly limited batch release."},
+      {id:5,sku:"VRX-005",name:"AFTER HOURS TEE",price:749,comparePrice:1299,tag:"NEW DROP",category:"NEW DROP",gsm:"260 GSM Luxury Heavy",colors:["Black","White"],sizes:["S","M","L","XL","XXL"],image:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=85",desc:"Made for late-night plans. Features reflective ink accents and an ultra-thick 1.25-inch collar rib."},
+      {id:6,sku:"VRX-006",name:"NO SIGNAL TEE",price:699,comparePrice:1099,tag:"EVERYDAY",category:"ESSENTIALS",gsm:"240 GSM Combed Cotton",colors:["White","Black"],sizes:["S","M","L","XL"],image:"https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=700&q=85",desc:"Everyday rotation staple with retro CRT glitch graphics and soft enzyme wash."},
+      {id:7,sku:"VRX-007",name:"OFF GRID TEE",price:799,comparePrice:1399,tag:"GRAPHIC SERIES",category:"GRAPHIC SERIES",gsm:"260 GSM Acid Wash",colors:["Black","Charcoal"],sizes:["S","M","L","XL"],image:"https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=700&q=85",desc:"Custom vintage mineral wash with cracked plastisol graphic print and raw-edge hem stitching."},
+      {id:8,sku:"VRX-008",name:"CORE OVERSIZED TEE",price:599,comparePrice:999,tag:"ESSENTIALS",category:"ESSENTIALS",gsm:"240 GSM Core Blank",colors:["Black","White"],sizes:["S","M","L","XL","XXL"],image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85",desc:"Clean, unbranded architectural fit with subtle tonal VIROX emblem at the nape."}
     ];
 
-    let catalog = [];
-    let selectedCategory = 'ALL';
-    let selectedSizes = {};
-    let cart = JSON.parse(localStorage.getItem('virox_cart') || '[]');
-    let activeCoupon = '';
+    let cart = JSON.parse(localStorage.getItem("virox-cart") || "[]");
+    let wishlist = JSON.parse(localStorage.getItem("virox-wish") || "[]");
+    let activeFilter = "ALL";
+    let cardState = {}; // stores selected size/color per product card
+    let activePromo = "";
+    let selectedPayMethod = "CASHFREE";
+
+    const money = n => "₹" + Number(n).toLocaleString("en-IN");
 
     async function initStore() {
       try {
         const res = await fetch('/api/products');
-        catalog = res.ok ? await res.json() : FALLBACK_CATALOG;
-      } catch {
-        catalog = FALLBACK_CATALOG;
-      }
-      catalog.forEach(p => { selectedSizes[p.id] = 'M'; });
-      renderCatalog();
+        if (res.ok) products = await res.json();
+      } catch (e) {}
+      products.forEach(p => { cardState[p.id] = { size: "L", color: p.colors[0] }; });
+      renderProducts();
       renderCart();
+      updateWishBadge();
       checkUrlOrderReturn();
     }
 
-    function filterCategory(cat, btn) {
-      selectedCategory = cat;
-      document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderCatalog();
+    function setCardOpt(id, key, val, ev) {
+      if (ev) ev.stopPropagation();
+      cardState[id][key] = val;
+      renderProducts();
     }
 
-    function selectCardSize(productId, size) {
-      selectedSizes[productId] = size;
-      renderCatalog();
-    }
-
-    function renderCatalog() {
-      const query = document.getElementById('search-input').value.toLowerCase();
-      const sort = document.getElementById('sort-select').value;
-
-      let filtered = catalog.filter(p => {
-        const matchCat = selectedCategory === 'ALL' || p.category === selectedCategory;
-        const matchQuery = p.title.toLowerCase().includes(query) || p.subtitle.toLowerCase().includes(query);
-        return matchCat && matchQuery;
-      });
-
-      if (sort === 'low') filtered.sort((a, b) => a.price - b.price);
-      if (sort === 'high') filtered.sort((a, b) => b.price - a.price);
-
-      document.getElementById('result-count').textContent = `Showing ${filtered.length} heavyweight styles`;
-
-      const grid = document.getElementById('product-grid');
-      grid.innerHTML = filtered.map(p => {
-        const savePct = Math.round(((p.compareAtPrice - p.price) / p.compareAtPrice) * 100);
-        const currentSize = selectedSizes[p.id] || 'M';
-        return `
-          <div class="product-card">
-            <div class="img-wrap">
-              <span class="badge">${p.badge}</span>
-              <img src="${p.images[0]}" alt="${p.title}" loading="lazy" />
-            </div>
-            <div class="card-body">
-              <div class="card-meta">
-                <span>${p.category}</span>
-                <span>★ ${p.rating} (${p.reviewsCount})</span>
+    function cardHTML(p) {
+      const st = cardState[p.id] || { size: "L", color: p.colors[0] };
+      const wished = wishlist.includes(p.id);
+      const savePct = Math.round(((p.comparePrice - p.price) / p.comparePrice) * 100);
+      return `
+        <article class="product-card">
+          <div class="product-image-wrap" onclick="openPdp(${p.id})">
+            <img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy">
+            <span class="tag">${p.tag}</span>
+            <button class="wishlist-vx ${wished ? 'saved' : ''}" onclick="toggleWish(${p.id}, event)" aria-label="Wishlist">♥</button>
+            <div class="quick-bar" onclick="event.stopPropagation()">
+              <div class="size-row">
+                ${p.sizes.map(s => `<button class="sz-pill ${st.size === s ? 'active' : ''}" onclick="setCardOpt(${p.id},'size','${s}',event)">${s}</button>`).join("")}
               </div>
-              <div class="card-title">${p.title}</div>
-              <div class="card-sub">${p.subtitle}</div>
-              <div class="price-row">
-                <span class="price-now">₹${p.price.toLocaleString('en-IN')}</span>
-                <span class="price-old">₹${p.compareAtPrice.toLocaleString('en-IN')}</span>
-                <span class="discount-pill">${savePct}% OFF</span>
-              </div>
-              <div class="quick-sizes">
-                ${p.sizes.map(s => `
-                  <button class="size-chip ${currentSize === s ? 'selected' : ''}" onclick="selectCardSize('${p.id}', '${s}')">${s}</button>
-                `).join('')}
-              </div>
-              <button class="add-btn" onclick="addToCart('${p.id}')">
-                Add to Bag • Size ${currentSize}
-              </button>
+              <button class="quick-add-btn" onclick="addToCart(${p.id}, '${st.size}', '${st.color}')">ADD TO BAG (${st.size}) +</button>
             </div>
           </div>
-        `;
-      }).join('');
+          <div class="product-meta">
+            <div>
+              <p class="product-name" onclick="openPdp(${p.id})">${p.name}</p>
+              <p class="product-gsm">${p.gsm} · ${st.color}</p>
+              <div class="price-wrap">
+                <span class="price">${money(p.price)}</span>
+                <span class="compare-price">${money(p.comparePrice)}</span>
+                <span class="save-tag">${savePct}% OFF</span>
+              </div>
+            </div>
+            <div class="swatches">
+              ${p.colors.map(c => `<span class="swatch ${c.toLowerCase()} ${st.color === c ? 'active' : ''}" title="${c}" onclick="setCardOpt(${p.id},'color','${c}',event)"></span>`).join("")}
+            </div>
+          </div>
+        </article>`;
     }
 
-    function addToCart(productId) {
-      const product = catalog.find(p => p.id === productId);
-      const size = selectedSizes[productId] || 'M';
-      const color = product.colors[0];
-      const existing = cart.find(item => item.productId === productId && item.size === size);
-
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({
-          productId: product.id,
-          title: product.title,
-          price: product.price,
-          image: product.images[0],
-          size,
-          color,
-          quantity: 1
-        });
+    function setFilter(filter, btn) {
+      activeFilter = filter;
+      if (btn) {
+        document.querySelectorAll('.chip-vx').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
       }
-      saveCart();
-      toggleCart(true);
+      renderProducts();
     }
 
-    function updateQty(index, delta) {
-      cart[index].quantity += delta;
-      if (cart[index].quantity <= 0) cart.splice(index, 1);
+    function renderProducts() {
+      const q = document.querySelector("#search").value.toLowerCase().trim();
+      const sort = document.querySelector("#sortSelect").value;
+
+      let list = products.filter(p => {
+        const matchCat = activeFilter === "ALL" || p.tag === activeFilter || p.category === activeFilter;
+        const matchQ = p.name.toLowerCase().includes(q) || p.gsm.toLowerCase().includes(q) || p.tag.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+
+      if (sort === "low") list.sort((a, b) => a.price - b.price);
+      if (sort === "high") list.sort((a, b) => b.price - a.price);
+
+      document.querySelector("#productGrid").innerHTML = list.map(cardHTML).join("");
+      document.querySelector("#collectionGrid").innerHTML = products.slice(4, 8).map(cardHTML).join("");
+    }
+
+    function openPdp(id) {
+      const p = products.find(x => x.id === id);
+      const st = cardState[id] || { size: "L", color: p.colors[0] };
+      const modal = document.querySelector("#pdpModal");
+      document.querySelector("#pdpContent").innerHTML = `
+        <div>
+          <img class="pdp-main-img" src="${p.image}" alt="${p.name}">
+        </div>
+        <div>
+          <p class="kicker">${p.sku} · ${p.gsm}</p>
+          <h2 class="pdp-title">${p.name}</h2>
+          <div class="price-wrap" style="margin-bottom:14px;">
+            <span class="price" style="font-size:20px;">${money(p.price)}</span>
+            <span class="compare-price" style="font-size:14px;">${money(p.comparePrice)}</span>
+            <span class="save-tag">INCL. ALL TAXES</span>
+          </div>
+          <p style="font-size:12px;color:#555;line-height:1.7;">${p.desc}</p>
+
+          <div class="option-label"><span>COLOR: ${st.color.toUpperCase()}</span></div>
+          <div class="option-pills">
+            ${p.colors.map(c => `<button class="opt-btn ${st.color === c ? 'selected' : ''}" onclick="cardState[${p.id}].color='${c}';openPdp(${p.id})">${c}</button>`).join("")}
+          </div>
+
+          <div class="option-label">
+            <span>SELECT OVERSIZED SIZE: ${st.size}</span>
+            <button onclick="openSizeChart()" style="border:0;background:none;text-decoration:underline;font-size:10px;font-weight:800;">Size Chart</button>
+          </div>
+          <div class="option-pills">
+            ${p.sizes.map(s => `<button class="opt-btn ${st.size === s ? 'selected' : ''}" onclick="cardState[${p.id}].size='${s}';openPdp(${p.id})">${s}</button>`).join("")}
+          </div>
+
+          <button class="checkout" style="margin-top:22px;" onclick="addToCart(${p.id}, '${st.size}', '${st.color}');closePdp();openCart();">
+            ADD TO BAG — ${money(p.price)} →
+          </button>
+          <p style="font-size:10px;color:#666;margin-top:12px;">✓ Free shipping above ₹999 &nbsp; ✓ Cashfree Verified &nbsp; ✓ 7-Day Easy Size Exchange</p>
+        </div>
+      `;
+      modal.classList.add("open");
+    }
+
+    function closePdp() { document.querySelector("#pdpModal").classList.remove("open"); }
+
+    function addToCart(id, size = "L", color = "Black") {
+      const p = products.find(x => x.id === id);
+      const key = `${id}-${size}-${color}`;
+      const existing = cart.find(x => x.key === key);
+      if (existing) existing.qty++;
+      else cart.push({ key, id: p.id, name: p.name, price: p.price, image: p.image, size, color, qty: 1 });
       saveCart();
+      notify(`${p.name} (${size}) added to bag`);
     }
 
     function saveCart() {
-      localStorage.setItem('virox_cart', JSON.stringify(cart));
+      localStorage.setItem("virox-cart", JSON.stringify(cart));
       renderCart();
     }
 
-    function applyCoupon() {
-      const code = document.getElementById('coupon-input').value.trim().toUpperCase();
-      if (code === 'VIROX10' || code === 'DROP200') {
-        activeCoupon = code;
-        renderCart();
-      } else {
-        alert('Invalid code. Try VIROX10 (10% Off) or DROP200 (₹200 Off).');
-      }
+    function getTotals() {
+      const sub = cart.reduce((s, p) => s + p.price * p.qty, 0);
+      let disc = 0;
+      if (activePromo === "VIROX10") disc = Math.round(sub * 0.10);
+      if (activePromo === "FIRST100" && sub >= 699) disc = 100;
+      const afterDisc = Math.max(0, sub - disc);
+      const ship = sub === 0 ? 0 : (afterDisc >= 999 ? 0 : 79);
+      const codFee = (sub > 0 && selectedPayMethod === "COD") ? 49 : 0;
+      const total = afterDisc + ship + codFee;
+      return { sub, disc, ship, codFee, total };
     }
 
-    function getCartTotals() {
-      const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      let discount = 0;
-      if (activeCoupon === 'VIROX10') discount = Math.round(subtotal * 0.10);
-      if (activeCoupon === 'DROP200' && subtotal >= 999) discount = 200;
-      const shipping = subtotal === 0 ? 0 : (subtotal - discount >= 1500 ? 0 : 99);
-      const total = Math.max(0, subtotal - discount + shipping);
-      return { subtotal, discount, shipping, total };
+    function applyPromo() {
+      const code = document.querySelector("#promoInput").value.trim().toUpperCase();
+      if (code === "VIROX10" || code === "FIRST100") {
+        activePromo = code;
+        renderCart();
+        notify(`Promo code ${code} applied!`);
+      } else {
+        notify("Invalid code. Use VIROX10 or FIRST100");
+      }
     }
 
     function renderCart() {
-      const count = cart.reduce((sum, i) => sum + i.quantity, 0);
-      document.getElementById('cart-count').textContent = count;
+      const count = cart.reduce((s, p) => s + p.qty, 0);
+      document.querySelector("#cartCount").textContent = count;
+      document.querySelector("#drawerCount").textContent = count;
 
-      const { subtotal, discount, shipping, total } = getCartTotals();
-      const freeThreshold = 1500;
-      const rem = Math.max(0, freeThreshold - (subtotal - discount));
-      document.getElementById('shipping-msg').textContent = rem === 0 && subtotal > 0
-        ? 'Unlocked FREE Express Shipping!'
-        : `Add ₹${rem.toLocaleString('en-IN')} more for FREE Express Shipping`;
-      document.getElementById('shipping-bar').style.width = `${Math.min(100, ((subtotal - discount) / freeThreshold) * 100)}%`;
+      const { sub, disc, ship, total } = getTotals();
+      const rem = Math.max(0, 999 - (sub - disc));
+      document.querySelector("#shipMsg").textContent = rem === 0 && sub > 0
+        ? "✓ You unlocked FREE Express Shipping!"
+        : `Add ${money(rem)} more for FREE Express Shipping`;
+      document.querySelector("#shipFill").style.width = `${Math.min(100, ((sub - disc) / 999) * 100)}%`;
 
-      const container = document.getElementById('cart-items');
-      if (cart.length === 0) {
-        container.innerHTML = `<p style="color:var(--muted); text-align:center; margin-top:3rem;">Your Virox bag is empty.</p>`;
-      } else {
-        container.innerHTML = cart.map((item, idx) => `
-          <div class="cart-item">
-            <img src="${item.image}" alt="${item.title}" />
-            <div style="flex:1;">
-              <div style="font-weight:700; font-size:0.9rem;">${item.title}</div>
-              <div style="color:var(--muted); font-size:0.78rem;">Size: ${item.size} • ${item.color}</div>
-              <div style="font-weight:700; margin-top:0.25rem;">₹${(item.price * item.quantity).toLocaleString('en-IN')}</div>
-              <div class="qty-box">
-                <button onclick="updateQty(${idx}, -1)">−</button>
-                <span>${item.quantity}</span>
-                <button onclick="updateQty(${idx}, 1)">+</button>
-              </div>
-            </div>
-          </div>
-        `).join('');
+      document.querySelector("#sumSub").textContent = money(sub);
+      document.querySelector("#sumDisc").textContent = "-" + money(disc);
+      document.querySelector("#sumShip").textContent = ship === 0 ? "FREE" : money(ship);
+      document.querySelector("#subtotal").textContent = money(sub - disc + ship);
+
+      const el = document.querySelector("#cartItems");
+      if (!cart.length) {
+        el.innerHTML = '<div class="empty">Your VIROX bag is empty.<br><br><a href="#shop" onclick="closeCart()" style="color:#000;font-weight:800;text-decoration:underline;">SHOP HEAVYWEIGHT TEES →</a></div>';
+        return;
       }
-
-      document.getElementById('sum-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
-      document.getElementById('sum-discount').textContent = `-₹${discount.toLocaleString('en-IN')}`;
-      document.getElementById('sum-shipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
-      document.getElementById('sum-total').textContent = `₹${total.toLocaleString('en-IN')}`;
+      el.innerHTML = cart.map(p => `
+        <div class="cart-item">
+          <img src="${p.image}" alt="${p.name}">
+          <div>
+            <h3>${p.name}</h3>
+            <p>${money(p.price)} · Size: <strong>${p.size}</strong> · ${p.color}</p>
+            <div class="qty">
+              <button onclick="changeQty('${p.key}', -1)">−</button>
+              <span>${p.qty}</span>
+              <button onclick="changeQty('${p.key}', 1)">+</button>
+            </div>
+            <button class="remove" onclick="removeItem('${p.key}')">Remove</button>
+          </div>
+          <strong style="font-size:12px">${money(p.price * p.qty)}</strong>
+        </div>`).join("");
     }
 
-    function toggleCart(open) {
-      document.getElementById('cart-overlay').classList.toggle('open', open);
+    function changeQty(key, delta) {
+      const item = cart.find(x => x.key === key);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty < 1) cart = cart.filter(x => x.key !== key);
+      saveCart();
     }
 
-    function openSizeGuide() {
-      document.getElementById('size-modal').classList.add('open');
+    function removeItem(key) {
+      cart = cart.filter(x => x.key !== key);
+      saveCart();
+    }
+
+    function openCart() { document.querySelector("#overlay").classList.add("open"); document.body.style.overflow = "hidden"; }
+    function closeCart() { document.querySelector("#overlay").classList.remove("open"); document.body.style.overflow = ""; }
+
+    // Wishlist
+    function toggleWish(id, ev) {
+      if (ev) ev.stopPropagation();
+      if (wishlist.includes(id)) {
+        wishlist = wishlist.filter(x => x !== id);
+        notify("Removed from Wishlist");
+      } else {
+        wishlist.push(id);
+        notify("Saved to Wishlist ♥");
+      }
+      localStorage.setItem("virox-wish", JSON.stringify(wishlist));
+      updateWishBadge();
+      renderProducts();
+    }
+
+    function updateWishBadge() { document.querySelector("#wishCount").textContent = wishlist.length; }
+
+    function openWishlist() {
+      const items = products.filter(p => wishlist.includes(p.id));
+      openPolicyModal("SAVED WISHLIST (" + items.length + ")",
+        items.length ? items.map(p => `
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eee;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <img src="${p.image}" style="width:50px;height:62px;object-fit:cover;">
+              <div><strong style="font-size:12px;">${p.name}</strong><div style="font-size:11px;color:#666;">${money(p.price)}</div></div>
+            </div>
+            <button class="btn dark" style="padding:8px 14px;" onclick="addToCart(${p.id});closeInfoModal();openCart();">ADD TO BAG</button>
+          </div>`).join("") : "<p>No tees saved in your wishlist yet.</p>"
+      );
+    }
+
+    // Checkout & Cashfree Integration
+    function selectPayMethod(method) {
+      selectedPayMethod = method;
+      document.querySelector("#pmCashfree").classList.toggle("active", method === "CASHFREE");
+      document.querySelector("#pmCod").classList.toggle("active", method === "COD");
+      document.querySelector("#chkCodRow").style.display = method === "COD" ? "flex" : "none";
+      document.querySelector("#paySubmitBtn").textContent = method === "CASHFREE"
+        ? "PAY NOW VIA CASHFREE →"
+        : "COMPLETE CASH ON DELIVERY ORDER →";
+      updateCheckoutSummary();
+    }
+
+    function updateCheckoutSummary() {
+      const { sub, disc, ship, codFee, total } = getTotals();
+      document.querySelector("#chkItemsList").innerHTML = cart.map(i => `
+        <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px;">
+          <span>${i.qty}x ${i.name} (${i.size}/${i.color})</span>
+          <strong>${money(i.price * i.qty)}</strong>
+        </div>`).join("");
+      document.querySelector("#chkSub").textContent = money(sub);
+      document.querySelector("#chkDisc").textContent = "-" + money(disc);
+      document.querySelector("#chkShip").textContent = ship === 0 ? "FREE" : money(ship);
+      document.querySelector("#chkTotal").textContent = money(total);
     }
 
     function openCheckoutModal() {
-      if (!cart.length) return alert('Add a Virox T-shirt to your bag first.');
-      toggleCart(false);
-      document.getElementById('checkout-modal').classList.add('open');
+      if (!cart.length) { notify("Your shopping bag is empty!"); return; }
+      closeCart();
+      updateCheckoutSummary();
+      document.querySelector("#checkoutModal").classList.add("open");
     }
 
-    function closeCheckoutModal() {
-      document.getElementById('checkout-modal').classList.remove('open');
-    }
+    function closeCheckoutModal() { document.querySelector("#checkoutModal").classList.remove("open"); }
 
-    // Trigger Cashfree Payment Gateway
-    document.getElementById('customer-checkout-form').addEventListener('submit', async (e) => {
+    document.querySelector("#checkoutForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const btn = document.getElementById('cf-submit-btn');
-      const statusEl = document.getElementById('checkout-status');
+      const btn = document.querySelector("#paySubmitBtn");
+      const statusBox = document.querySelector("#chkStatusBox");
       btn.disabled = true;
-      btn.textContent = 'INITIALIZING CASHFREE SESSION...';
+      btn.textContent = "PROCESSING ORDER...";
 
       const customer = {
-        name: document.getElementById('cust-name').value,
-        email: document.getElementById('cust-email').value,
-        phone: document.getElementById('cust-phone').value,
-        address: document.getElementById('cust-address').value,
-        city: document.getElementById('cust-city').value,
-        pincode: document.getElementById('cust-pincode').value
+        name: document.querySelector("#chkName").value,
+        email: document.querySelector("#chkEmail").value,
+        phone: document.querySelector("#chkPhone").value,
+        address: document.querySelector("#chkAddress").value,
+        city: document.querySelector("#chkCity").value,
+        pincode: document.querySelector("#chkPincode").value
       };
 
       try {
-        const res = await fetch('/api/cashfree/create-order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            items: cart,
-            couponCode: activeCoupon,
+        let data;
+        try {
+          const res = await fetch("/api/orders/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ items: cart, coupon: activePromo, paymentMethod: selectedPayMethod, customer })
+          });
+          data = await res.json();
+          if (!res.ok) throw new Error(data.error);
+        } catch (netErr) {
+          // Offline preview fallback if opened directly as an HTML file
+          const { total } = getTotals();
+          data = {
+            order_id: "VRX_" + Math.floor(100000 + Math.random() * 900000),
+            simulated: true,
+            order_status: selectedPayMethod === "COD" ? "COD_CONFIRMED" : "PAID",
+            order_amount: total,
             customer
-          })
-        });
-
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Server error');
-
-        // Launch Official Cashfree v3 Popup Checkout
-        const result = await cashfree.checkout({
-          paymentSessionId: data.payment_session_id,
-          redirectTarget: '_modal'
-        });
-
-        if (result.error) {
-          throw new Error(result.error.message);
+          };
         }
 
-        if (result.paymentDetails) {
-          const verifyRes = await fetch(`/api/cashfree/verify/${data.order_id}`);
-          const verifyData = await verifyRes.json();
-          statusEl.style.display = 'block';
-          statusEl.style.background = 'rgba(34,197,94,0.15)';
-          statusEl.style.color = '#22c55e';
-          statusEl.textContent = `Order ${verifyData.order_id} Confirmed! Status: ${verifyData.order_status}`;
-          cart = [];
-          saveCart();
+        // Real Cashfree JS v3 Modal Trigger when live session ID is returned
+        if (selectedPayMethod === "CASHFREE" && data.payment_session_id && !data.simulated && cashfree) {
+          const cfResult = await cashfree.checkout({
+            paymentSessionId: data.payment_session_id,
+            redirectTarget: "_modal"
+          });
+          if (cfResult.error) throw new Error(cfResult.error.message);
+          const vRes = await fetch(`/api/orders/verify/${data.order_id}`);
+          data = await vRes.json();
         }
+
+        // Save order locally for Order Tracker lookup
+        const savedOrders = JSON.parse(localStorage.getItem("virox-orders") || "[]");
+        savedOrders.unshift({
+          order_id: data.order_id,
+          status: data.order_status || "PAID",
+          amount: data.order_amount,
+          method: selectedPayMethod,
+          customer
+        });
+        localStorage.setItem("virox-orders", JSON.stringify(savedOrders));
+
+        cart = [];
+        saveCart();
+        closeCheckoutModal();
+        openPolicyModal(
+          "ORDER CONFIRMED ✓",
+          `<p style="font-size:13px;">Thank you, <strong>${customer.name}</strong>! Your VIROX order has been registered.</p>
+           <div style="background:#f5f5f3;padding:14px;font-size:12px;margin:14px 0;">
+             <div><strong>Order ID:</strong> ${data.order_id}</div>
+             <div><strong>Payment Method:</strong> ${selectedPayMethod}</div>
+             <div><strong>Amount:</strong> ${money(data.order_amount)}</div>
+             <div><strong>Delivering To:</strong> ${customer.address}, ${customer.city} - ${customer.pincode}</div>
+           </div>
+           <p style="font-size:11px;color:#666;">Use the 📦 icon in the header anytime to track your order status.</p>`
+        );
       } catch (err) {
-        statusEl.style.display = 'block';
-        statusEl.style.background = 'rgba(239,68,68,0.15)';
-        statusEl.style.color = '#ef4444';
-        statusEl.textContent = `Cashfree Notice: ${err.message}. Ensure CASHFREE_APP_ID & CASHFREE_SECRET_KEY are set in .env.`;
+        statusBox.style.display = "block";
+        statusBox.style.background = "#fee2e2";
+        statusBox.style.color = "#dc2626";
+        statusBox.textContent = err.message;
       } finally {
         btn.disabled = false;
-        btn.textContent = 'PAY NOW WITH CASHFREE';
+        selectPayMethod(selectedPayMethod);
       }
     });
 
+    // Helper Modals (Size Chart, Order Lookup, Policies)
+    function openPolicyModal(title, htmlContent) {
+      const modal = document.querySelector("#infoModal");
+      document.querySelector("#infoModalBody").innerHTML = `
+        <button class="modal-close" onclick="closeInfoModal()">×</button>
+        <p class="kicker">VIROX® OFFICIAL</p>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:22px;margin:0 0 16px;">${title}</h3>
+        <div style="font-size:12px;line-height:1.7;color:#333;">${htmlContent}</div>
+      `;
+      modal.classList.add("open");
+    }
+
+    function closeInfoModal() { document.querySelector("#infoModal").classList.remove("open"); }
+
+    function openSizeChart() {
+      openPolicyModal("OVERSIZED BOX-FIT SIZE GUIDE (INCHES)", `
+        <p style="margin-bottom:12px;">All VIROX tees are cut in a relaxed drop-shoulder boxy fit. Stick to your true size for an oversized street drape.</p>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;text-align:left;">
+          <thead>
+            <tr style="background:#080808;color:#fff;">
+              <th style="padding:10px;">Size</th><th style="padding:10px;">Chest</th><th style="padding:10px;">Length</th><th style="padding:10px;">Shoulder</th><th style="padding:10px;">Sleeve</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #ddd;"><td style="padding:10px;font-weight:700;">S</td><td>42"</td><td>27.5"</td><td>20.5"</td><td>8.5"</td></tr>
+            <tr style="border-bottom:1px solid #ddd;"><td style="padding:10px;font-weight:700;">M</td><td>44"</td><td>28.5"</td><td>21.5"</td><td>9.0"</td></tr>
+            <tr style="border-bottom:1px solid #ddd;"><td style="padding:10px;font-weight:700;">L</td><td>46"</td><td>29.5"</td><td>22.5"</td><td>9.5"</td></tr>
+            <tr style="border-bottom:1px solid #ddd;"><td style="padding:10px;font-weight:700;">XL</td><td>48"</td><td>30.5"</td><td>23.5"</td><td>10.0"</td></tr>
+            <tr><td style="padding:10px;font-weight:700;">XXL</td><td>50"</td><td>31.5"</td><td>24.5"</td><td>10.5"</td></tr>
+          </tbody>
+        </table>
+      `);
+    }
+
+    function openOrderLookup() {
+      const orders = JSON.parse(localStorage.getItem("virox-orders") || "[]");
+      openPolicyModal("YOUR RECENT ORDERS", orders.length ? orders.map(o => `
+        <div style="border:1px solid #ddd;padding:12px;margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;font-weight:800;">
+            <span>${o.order_id}</span>
+            <span style="color:var(--green)">${o.status}</span>
+          </div>
+          <div style="font-size:11px;color:#666;margin-top:4px;">${o.method} · ${money(o.amount)} · ${o.customer?.city || ''}</div>
+        </div>`).join("") : "<p>You haven't placed an order from this browser yet.</p>");
+    }
+
+    function toggleMobileNav() {
+      const nav = document.querySelector("#mainNav");
+      nav.style.display = nav.style.display === "flex" ? "" : "flex";
+      nav.style.flexDirection = "column";
+      nav.style.position = "absolute";
+      nav.style.top = "76px";
+      nav.style.left = "0";
+      nav.style.right = "0";
+      nav.style.background = "#080808";
+      nav.style.padding = "20px 5%";
+    }
+
     async function checkUrlOrderReturn() {
       const params = new URLSearchParams(window.location.search);
-      const orderId = params.get('order_id');
+      const orderId = params.get("order_id");
       if (orderId) {
-        const res = await fetch(`/api/cashfree/verify/${orderId}`);
-        if (res.ok) {
-          const data = await res.json();
-          alert(`Virox Order ${data.order_id} Payment Status: ${data.order_status}`);
-        }
+        try {
+          const res = await fetch(`/api/orders/verify/${orderId}`);
+          if (res.ok) {
+            const d = await res.json();
+            openPolicyModal("CASHFREE PAYMENT STATUS", `<p>Order <strong>${d.order_id}</strong> status: <strong>${d.order_status}</strong></p>`);
+          }
+        } catch (e) {}
       }
     }
 
+    let toastTimer;
+    function notify(msg) {
+      const t = document.querySelector("#toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove("show"), 2600);
+    }
+
+    document.querySelector("#newsletterForm").addEventListener("submit", e => {
+      e.preventDefault();
+      notify("Unlocked! Use code VIROX10 at checkout for 10% OFF.");
+      e.target.reset();
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
     initStore();
   </script>
 </body>

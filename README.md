@@ -10,3 +10,7 @@ Inspired by the supplied streetwear reference: rotating announcement strip (auto
 
 ## Latest homepage redesign
 The VIROX homepage now follows the supplied Home Club lifestyle-store reference: large lifestyle hero with centered brand label, four compact category tiles, four featured essentials, a build-your-look outfit strip, editorial brand advice with benefits, and five lifestyle collection tiles. The rotating announcement bar and continuous marquee are retained from the previous revision. Product imagery is illustrative stock photography and should be replaced with actual VIROX product photography before launch.
+
+
+## Product detail page redesign
+Product pages now use a premium gallery-and-details layout inspired by the supplied reference: vertical thumbnail rail, large main image, product badge, title, rating-style visual, pricing/discount, colour swatches, size selector, add-to-cart and wishlist controls, shipping/payment reassurance, tabbed product details/materials/fit/shipping content, large detail image and related products. Product content is currently sample content; replace gallery photos and verify claims, ratings, material specs and policies before launch.
